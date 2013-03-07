@@ -1,7 +1,7 @@
 /*
- * Copyright (C) 2010 Nokia Corporation.
+ * Copyright (C) 2012 Intel Corporation.
  *
- * Authors: Arun Raghavan <arun.raghavan@collabora.co.uk>
+ * Authors: Krzesimir Nowak <krnowak@openismus.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -15,79 +15,71 @@
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
  */
-
-#include "gupnp-dlna-information.h"
-#include <gst/gstminiobject.h>
 
 /**
  * SECTION:gupnp-dlna-information
- * @short_description: Object containing metadata information returned by the
- * #GUPnPDLNADiscoverer API
+ * @short_description: Base class for storing various types of
+ * metadata informations.
  *
- * The GUPnPDLNAInformation object holds metadata information discovered by the
- * GUPnPDiscoverer API. The DLNA profile name and MIME type have their own
- * fields, and other metadata is held in a GstDiscovererInfo structure.
- * All fields are read-only.
+ * Subclasses of #GUPnPDLNAInformation should override all virtual
+ * functions provided by this class. The overrides should return a
+ * subclasses of specific information base classes.
+ *
+ * When instantiating a subclass of #GUPnPDLNAInformation make sure
+ * that "uri" with a URI to media file is passed to g_object_new().
  */
 
-G_DEFINE_TYPE (GUPnPDLNAInformation, gupnp_dlna_information, G_TYPE_OBJECT)
+#include "gupnp-dlna-information.h"
 
-#define GET_PRIVATE(o)                                                  \
-        (G_TYPE_INSTANCE_GET_PRIVATE ((o),                              \
-                                      GUPNP_TYPE_DLNA_INFORMATION,      \
-                                      GUPnPDLNAInformationPrivate))
-
-typedef struct _GUPnPDLNAInformationPrivate GUPnPDLNAInformationPrivate;
+G_DEFINE_ABSTRACT_TYPE (GUPnPDLNAInformation,
+                        gupnp_dlna_information,
+                        G_TYPE_OBJECT)
 
 struct _GUPnPDLNAInformationPrivate {
-        GstDiscovererInfo *info;
-        gchar             *name;
-        gchar             *mime;
+        gchar* uri;
+        gboolean got_audio_info;
+        gboolean got_container_info;
+        gboolean got_image_info;
+        gboolean got_video_info;
+        GUPnPDLNAAudioInformation *audio_info;
+        GUPnPDLNAContainerInformation *container_info;
+        GUPnPDLNAImageInformation *image_info;
+        GUPnPDLNAVideoInformation *video_info;
 };
 
 enum {
         PROP_0,
-        PROP_DLNA_NAME,
-        PROP_DLNA_MIME,
-        PROP_DISCOVERER_INFO,
+
+        PROP_URI,
+        PROP_AUDIO_INFO,
+        PROP_CONTAINER_INFO,
+        PROP_IMAGE_INFO,
+        PROP_VIDEO_INFO
 };
 
 static void
-gupnp_dlna_information_get_property (GObject    *object,
-                                     guint       property_id,
-                                     GValue     *value,
-                                     GParamSpec *pspec)
+gupnp_dlna_information_dispose (GObject *object)
 {
-        GUPnPDLNAInformation *self = GUPNP_DLNA_INFORMATION (object);
-        GUPnPDLNAInformationPrivate *priv = GET_PRIVATE (self);
+        GUPnPDLNAInformation *info = GUPNP_DLNA_INFORMATION (object);
+        GUPnPDLNAInformationPrivate *priv = info->priv;
 
-        switch (property_id) {
-                case PROP_DLNA_NAME:
-                        g_value_set_string (value, priv->name);
+        g_clear_object (&priv->audio_info);
+        g_clear_object (&priv->container_info);
+        g_clear_object (&priv->image_info);
+        g_clear_object (&priv->video_info);
+        G_OBJECT_CLASS (gupnp_dlna_information_parent_class)->dispose (object);
+}
 
-                        break;
+static void
+gupnp_dlna_information_finalize (GObject *object)
+{
+        GUPnPDLNAInformation *info = GUPNP_DLNA_INFORMATION (object);
 
-                case PROP_DLNA_MIME:
-                        g_value_set_string (value, priv->mime);
-
-                        break;
-
-                case PROP_DISCOVERER_INFO:
-                        gst_value_set_mini_object (value,
-                                                   GST_MINI_OBJECT(priv->info));
-
-                        break;
-
-                default:
-                        G_OBJECT_WARN_INVALID_PROPERTY_ID (object,
-                                                           property_id,
-                                                           pspec);
-
-                        break;
-        }
+        g_free (info->priv->uri);
+        G_OBJECT_CLASS (gupnp_dlna_information_parent_class)->finalize (object);
 }
 
 static void
@@ -96,170 +88,321 @@ gupnp_dlna_information_set_property (GObject      *object,
                                      const GValue *value,
                                      GParamSpec   *pspec)
 {
-        GUPnPDLNAInformation *self = GUPNP_DLNA_INFORMATION (object);
-        GUPnPDLNAInformationPrivate *priv = GET_PRIVATE (self);
+        GUPnPDLNAInformation *info = GUPNP_DLNA_INFORMATION (object);
+        GUPnPDLNAInformationPrivate *priv = info->priv;
 
         switch (property_id) {
-                case PROP_DLNA_NAME:
-                        g_free (priv->name);
-                        priv->name = g_value_dup_string (value);
+        case PROP_URI:
+                g_free (priv->uri);
+                priv->uri = g_value_dup_string (value);
+                break;
 
-                        break;
-
-                case PROP_DLNA_MIME:
-                        g_free (priv->mime);
-                        priv->mime = g_value_dup_string (value);
-
-                        break;
-
-                case PROP_DISCOVERER_INFO:
-                        if (priv->info)
-                                gst_discoverer_info_unref (priv->info);
-                        priv->info = GST_DISCOVERER_INFO
-                                (gst_value_dup_mini_object (value));
-
-                        break;
-
-                default:
-                        G_OBJECT_WARN_INVALID_PROPERTY_ID (object,
-                                                           property_id,
-                                                           pspec);
-
-                        break;
+        default:
+                G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+                break;
         }
 }
 
-
 static void
-gupnp_dlna_information_finalize (GObject *object)
+gupnp_dlna_information_get_property (GObject    *object,
+                                     guint       property_id,
+                                     GValue     *value,
+                                     GParamSpec *pspec)
 {
-        GUPnPDLNAInformation *self = GUPNP_DLNA_INFORMATION (object);
-        GUPnPDLNAInformationPrivate *priv = GET_PRIVATE (self);
+        GUPnPDLNAInformation *info = GUPNP_DLNA_INFORMATION (object);
+        GUPnPDLNAInformationPrivate *priv = info->priv;
 
-        g_free (priv->name);
-        g_free (priv->mime);
-        if (priv->info)
-                gst_discoverer_info_unref (priv->info);
+        switch (property_id) {
+        case PROP_URI:
+                g_value_set_string (value, priv->uri);
 
-        G_OBJECT_CLASS (gupnp_dlna_information_parent_class)->finalize (object);
+                break;
+        case PROP_AUDIO_INFO:
+                g_value_set_object
+                          (value,
+                           gupnp_dlna_information_get_audio_information (info));
+
+                break;
+        case PROP_CONTAINER_INFO:
+                g_value_set_object
+                      (value,
+                       gupnp_dlna_information_get_container_information (info));
+
+                break;
+        case PROP_IMAGE_INFO:
+                g_value_set_object
+                          (value,
+                           gupnp_dlna_information_get_image_information (info));
+
+                break;
+        case PROP_VIDEO_INFO:
+                g_value_set_object
+                          (value,
+                           gupnp_dlna_information_get_video_information (info));
+
+                break;
+        default:
+                G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+
+                break;
+        }
 }
 
 static void
-gupnp_dlna_information_class_init (GUPnPDLNAInformationClass *klass)
+gupnp_dlna_information_class_init (GUPnPDLNAInformationClass *info_class)
 {
-        GObjectClass *object_class = G_OBJECT_CLASS (klass);
+        GObjectClass *object_class = G_OBJECT_CLASS (info_class);
         GParamSpec *pspec;
 
-        g_type_class_add_private (klass, sizeof (GUPnPDLNAInformationPrivate));
-
-        object_class->get_property = gupnp_dlna_information_get_property;
-        object_class->set_property = gupnp_dlna_information_set_property;
+        object_class->dispose = gupnp_dlna_information_dispose;
         object_class->finalize = gupnp_dlna_information_finalize;
+        object_class->set_property = gupnp_dlna_information_set_property;
+        object_class->get_property = gupnp_dlna_information_get_property;
+        info_class->get_container_information = NULL;
+        info_class->get_image_information = NULL;
+        info_class->get_video_information = NULL;
+        info_class->get_audio_information = NULL;
 
-        pspec = g_param_spec_string ("name",
-                                     "DLNA profile name",
-                                     "The name of the DLNA profile "
-                                     "corresponding to the strream",
+        /**
+         * GUPnPDLNAInformation:uri:
+         *
+         * URI of file which metadata this object stores.
+         */
+        pspec = g_param_spec_string ("uri",
+                                     "uri",
+                                     "URI of file which metadata this object "
+                                     "stores",
                                      NULL,
                                      G_PARAM_READWRITE |
                                      G_PARAM_CONSTRUCT_ONLY);
-        g_object_class_install_property (object_class, PROP_DLNA_NAME, pspec);
+        g_object_class_install_property (object_class, PROP_URI, pspec);
 
-        pspec = g_param_spec_string ("mime",
-                                     "DLNA profile MIME type corresponding "
-                                     "to the stream",
-                                     "The DLNA MIME type of the stream",
-                                     NULL,
-                                     G_PARAM_READWRITE |
-                                     G_PARAM_CONSTRUCT_ONLY);
-        g_object_class_install_property (object_class, PROP_DLNA_MIME, pspec);
+        /**
+         * GUPnPDLNAInformation:audio-information:
+         *
+         * Audio information of a file.
+         */
+        pspec = g_param_spec_object ("audio-information",
+                                     "Audio information",
+                                     "Audio information of a file",
+                                     GUPNP_TYPE_DLNA_AUDIO_INFORMATION,
+                                     G_PARAM_READABLE);
+        g_object_class_install_property (object_class, PROP_AUDIO_INFO, pspec);
 
-        pspec = gst_param_spec_mini_object ("info",
-                                            "Stream metadata",
-                                            "Metadata of the stream in a "
-                                            "GstDiscovererInfo structure",
-                                            GST_TYPE_DISCOVERER_INFO,
-                                            G_PARAM_READWRITE |
-                                            G_PARAM_CONSTRUCT_ONLY);
+        /**
+         * GUPnPDLNAInformation:container-information:
+         *
+         * Container information of a file.
+         */
+        pspec = g_param_spec_object ("container-information",
+                                     "Container information",
+                                     "Container information of a file",
+                                     GUPNP_TYPE_DLNA_CONTAINER_INFORMATION,
+                                     G_PARAM_READABLE);
         g_object_class_install_property (object_class,
-                                         PROP_DISCOVERER_INFO,
+                                         PROP_CONTAINER_INFO,
                                          pspec);
+
+        /**
+         * GUPnPDLNAInformation:image-information:
+         *
+         * Image information of a file.
+         */
+        pspec = g_param_spec_object ("image-information",
+                                     "Image information",
+                                     "Image information of a file",
+                                     GUPNP_TYPE_DLNA_IMAGE_INFORMATION,
+                                     G_PARAM_READABLE);
+        g_object_class_install_property (object_class, PROP_IMAGE_INFO, pspec);
+
+        /**
+         * GUPnPDLNAInformation:video-information:
+         *
+         * Video information of a file.
+         */
+        pspec = g_param_spec_object ("video-information",
+                                     "Video information",
+                                     "Video information of a file",
+                                     GUPNP_TYPE_DLNA_VIDEO_INFORMATION,
+                                     G_PARAM_READABLE);
+        g_object_class_install_property (object_class, PROP_VIDEO_INFO, pspec);
+
+        g_type_class_add_private (info_class,
+                                  sizeof (GUPnPDLNAInformationPrivate));
 }
 
 static void
-gupnp_dlna_information_init (GUPnPDLNAInformation *self)
+gupnp_dlna_information_init (GUPnPDLNAInformation *info)
 {
-        GUPnPDLNAInformationPrivate *priv = GET_PRIVATE (self);
+        GUPnPDLNAInformationPrivate *priv = G_TYPE_INSTANCE_GET_PRIVATE
+                                        (info,
+                                         GUPNP_TYPE_DLNA_INFORMATION,
+                                         GUPnPDLNAInformationPrivate);
 
-        priv->name = NULL;
-        priv->mime = NULL;
-        priv->info = NULL;
+        priv->uri = NULL;
+        priv->got_audio_info = FALSE;
+        priv->got_container_info = FALSE;
+        priv->got_image_info = FALSE;
+        priv->got_video_info = FALSE;
+        priv->audio_info = NULL;
+        priv->container_info = NULL;
+        priv->image_info = NULL;
+        priv->video_info = NULL;
+        info->priv = priv;
 }
 
 /**
- * gupnp_dlna_information_new:
- * @name: DLNA media profile name corresponding to the media
- * @mime: DLNA MIME type for the media
- * @info: #GstDiscovererInfo type with additional metadata about the
- *        stream
+ * gupnp_dlna_information_get_audio_information:
+ * @info: A #GUPnPDLNAInformation object.
  *
- * Creates a new #GUPnPDLNAInformation object with the given properties.
+ * Get an audio information of media file if applicable (e.g. for
+ * video and audio files).
  *
- * Returns: A newly created #GUPnPDLNAInformation object.
+ * Returns: (transfer none): A #GUPnPDLNAAudioInformation object or %NULL.
  */
-GUPnPDLNAInformation*
-gupnp_dlna_information_new (gchar             *name,
-                            gchar             *mime,
-                            GstDiscovererInfo *info)
+GUPnPDLNAAudioInformation *
+gupnp_dlna_information_get_audio_information (GUPnPDLNAInformation *info)
 {
-        return g_object_new (GUPNP_TYPE_DLNA_INFORMATION,
-                             "name", name,
-                             "mime", mime,
-                             "info", info,
-                             NULL);
+        GUPnPDLNAInformationPrivate *priv;
+
+        g_return_val_if_fail (GUPNP_IS_DLNA_INFORMATION (info), NULL);
+
+        priv = info->priv;
+        if (!priv->got_audio_info) {
+                GUPnPDLNAInformationClass *info_class;
+
+                info_class = GUPNP_DLNA_INFORMATION_GET_CLASS (info);
+
+                g_return_val_if_fail
+                                  (GUPNP_IS_DLNA_INFORMATION_CLASS (info_class),
+                                   NULL);
+                g_return_val_if_fail (info_class->get_audio_information != NULL,
+                                      NULL);
+
+                priv->audio_info = info_class->get_audio_information (info);
+                priv->got_audio_info = TRUE;
+        }
+
+        return priv->audio_info;
 }
 
 /**
- * gupnp_dlna_information_get_name:
- * @self: The #GUPnPDLNAInformation object
+ * gupnp_dlna_information_get_container_information:
+ * @info: A #GUPnPDLNAInformation object.
  *
- * Returns: the DLNA profile name of the stream represented by @self. Do not
- *          free this string.
+ * Get an container information of media file if applicable (e.g. for
+ * video and audio files).
+ *
+ * Returns: (transfer none): A #GUPnPDLNAContainerInformation object or %NULL.
+ */
+GUPnPDLNAContainerInformation *
+gupnp_dlna_information_get_container_information (GUPnPDLNAInformation *info)
+{
+        GUPnPDLNAInformationPrivate *priv;
+
+        g_return_val_if_fail (GUPNP_IS_DLNA_INFORMATION (info), NULL);
+
+        priv = info->priv;
+        if (!priv->got_container_info) {
+                GUPnPDLNAInformationClass *info_class;
+
+                info_class = GUPNP_DLNA_INFORMATION_GET_CLASS (info);
+
+                g_return_val_if_fail
+                                  (GUPNP_IS_DLNA_INFORMATION_CLASS (info_class),
+                                   NULL);
+                g_return_val_if_fail
+                                 (info_class->get_container_information != NULL,
+                                  NULL);
+
+                priv->container_info =
+                                   info_class->get_container_information (info);
+                priv->got_container_info = TRUE;
+        }
+
+        return priv->container_info;
+}
+
+/**
+ * gupnp_dlna_information_get_image_information:
+ * @info: A #GUPnPDLNAInformation object.
+ *
+ * Get an container information of media file if applicable (e.g. for
+ * image files).
+ *
+ * Returns: (transfer none): A #GUPnPDLNAImageInformation object or %NULL.
+ */
+GUPnPDLNAImageInformation *
+gupnp_dlna_information_get_image_information (GUPnPDLNAInformation *info)
+{
+        GUPnPDLNAInformationPrivate *priv;
+
+        g_return_val_if_fail (GUPNP_IS_DLNA_INFORMATION (info), NULL);
+
+        priv = info->priv;
+        if (!priv->got_image_info) {
+                GUPnPDLNAInformationClass *info_class;
+
+                info_class = GUPNP_DLNA_INFORMATION_GET_CLASS (info);
+
+                g_return_val_if_fail
+                                  (GUPNP_IS_DLNA_INFORMATION_CLASS (info_class),
+                                   NULL);
+                g_return_val_if_fail (info_class->get_image_information != NULL,
+                                      NULL);
+
+                priv->image_info = info_class->get_image_information (info);
+                priv->got_image_info = TRUE;
+        }
+
+        return priv->image_info;
+}
+
+/**
+ * gupnp_dlna_information_get_video_information:
+ * @info: A #GUPnPDLNAInformation object.
+ *
+ * Get an container information of media file if applicable (e.g. for
+ * video files).
+ *
+ * Returns: (transfer none): A #GUPnPDLNAVideoInformation object or %NULL.
+ */
+GUPnPDLNAVideoInformation *
+gupnp_dlna_information_get_video_information (GUPnPDLNAInformation *info)
+{
+        GUPnPDLNAInformationPrivate *priv;
+
+        g_return_val_if_fail (GUPNP_IS_DLNA_INFORMATION (info), NULL);
+
+        priv = info->priv;
+        if (!priv->got_video_info) {
+                GUPnPDLNAInformationClass *info_class;
+
+                info_class = GUPNP_DLNA_INFORMATION_GET_CLASS (info);
+
+                g_return_val_if_fail
+                                  (GUPNP_IS_DLNA_INFORMATION_CLASS (info_class),
+                                   NULL);
+                g_return_val_if_fail (info_class->get_video_information != NULL,
+                                      NULL);
+
+                priv->video_info = info_class->get_video_information (info);
+                priv->got_video_info = TRUE;
+        }
+
+        return priv->video_info;
+}
+
+/**
+ * gupnp_dlna_information_get_uri:
+ * @info: A #GUPnPDLNAInformation object.
+ *
+ * Returns: (transfer none): An URI of a file.
  */
 const gchar *
-gupnp_dlna_information_get_name (GUPnPDLNAInformation *self)
+gupnp_dlna_information_get_uri (GUPnPDLNAInformation *info)
 {
-        GUPnPDLNAInformationPrivate *priv = GET_PRIVATE (self);
+        g_return_val_if_fail (GUPNP_IS_DLNA_INFORMATION (info), NULL);
 
-        return priv->name;
-}
-
-/**
- * gupnp_dlna_information_get_mime:
- * @self: The #GUPnPDLNAInformation object
- *
- * Returns: the DLNA MIME type of the stream represented by @self. Do not
- *          free this string.
- */
-const gchar *
-gupnp_dlna_information_get_mime (GUPnPDLNAInformation *self)
-{
-        GUPnPDLNAInformationPrivate *priv = GET_PRIVATE (self);
-
-        return priv->mime;
-}
-
-/**finalize
- * gupnp_dlna_information_get_info:
- * @self: The #GUPnPDLNAInformation object
- *
- * Returns: additional stream metadata for @self in the form of a
- *          #GstDiscovererInfo structure. Do not free this structure.
- */
-const GstDiscovererInfo *
-gupnp_dlna_information_get_info (GUPnPDLNAInformation *self)
-{
-        GUPnPDLNAInformationPrivate *priv = GET_PRIVATE (self);
-
-        return priv->info;
+        return info->priv->uri;
 }

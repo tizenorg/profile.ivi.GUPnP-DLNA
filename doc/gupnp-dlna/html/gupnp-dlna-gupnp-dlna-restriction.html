@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>gupnp-dlna-restriction</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<link rel="home" href="index.html" title="GUPnP DLNA Reference Manual">
+<link rel="up" href="ch01.html" title="GUPnP DLNA">
+<link rel="prev" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation">
+<link rel="next" href="gupnp-dlna-gupnp-dlna-value-list.html" title="gupnp-dlna-value-list">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="GUPnPDLNAVideoInformation.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GUPnP DLNA Reference Manual</th>
+<td><a accesskey="n" href="gupnp-dlna-gupnp-dlna-value-list.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#gupnp-dlna-gupnp-dlna-restriction.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#gupnp-dlna-gupnp-dlna-restriction.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#gupnp-dlna-gupnp-dlna-restriction.object-hierarchy" class="shortcut">Object Hierarchy</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="gupnp-dlna-gupnp-dlna-restriction"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="gupnp-dlna-gupnp-dlna-restriction.top_of_page"></a>gupnp-dlna-restriction</span></h2>
+<p>gupnp-dlna-restriction</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="gupnp-dlna-gupnp-dlna-restriction.synopsis"></a><h2>Synopsis</h2>
+<a name="GUPnPDLNARestriction"></a><pre class="synopsis">                    <a class="link" href="gupnp-dlna-gupnp-dlna-restriction.html#GUPnPDLNARestriction-struct" title="GUPnPDLNARestriction">GUPnPDLNARestriction</a>;
+<a class="link" href="gupnp-dlna-gupnp-dlna-restriction.html#GUPnPDLNARestriction"><span class="returnvalue">GUPnPDLNARestriction</span></a> * <a class="link" href="gupnp-dlna-gupnp-dlna-restriction.html#gupnp-dlna-restriction-copy" title="gupnp_dlna_restriction_copy ()">gupnp_dlna_restriction_copy</a>      (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-restriction.html#GUPnPDLNARestriction"><span class="type">GUPnPDLNARestriction</span></a> *restriction</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gupnp-dlna-gupnp-dlna-restriction.html#gupnp-dlna-restriction-free" title="gupnp_dlna_restriction_free ()">gupnp_dlna_restriction_free</a>         (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-restriction.html#GUPnPDLNARestriction"><span class="type">GUPnPDLNARestriction</span></a> *restriction</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="returnvalue">GHashTable</span></a> *        <a class="link" href="gupnp-dlna-gupnp-dlna-restriction.html#gupnp-dlna-restriction-get-entries" title="gupnp_dlna_restriction_get_entries ()">gupnp_dlna_restriction_get_entries</a>  (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-restriction.html#GUPnPDLNARestriction"><span class="type">GUPnPDLNARestriction</span></a> *restriction</code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="gupnp-dlna-gupnp-dlna-restriction.html#gupnp-dlna-restriction-get-mime" title="gupnp_dlna_restriction_get_mime ()">gupnp_dlna_restriction_get_mime</a>     (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-restriction.html#GUPnPDLNARestriction"><span class="type">GUPnPDLNARestriction</span></a> *restriction</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="gupnp-dlna-gupnp-dlna-restriction.html#gupnp-dlna-restriction-is-empty" title="gupnp_dlna_restriction_is_empty ()">gupnp_dlna_restriction_is_empty</a>     (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-restriction.html#GUPnPDLNARestriction"><span class="type">GUPnPDLNARestriction</span></a> *restriction</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *             <a class="link" href="gupnp-dlna-gupnp-dlna-restriction.html#gupnp-dlna-restriction-to-string" title="gupnp_dlna_restriction_to_string ()">gupnp_dlna_restriction_to_string</a>    (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-restriction.html#GUPnPDLNARestriction"><span class="type">GUPnPDLNARestriction</span></a> *restriction</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="gupnp-dlna-gupnp-dlna-restriction.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GBoxed
+   +----GUPnPDLNARestriction
+</pre>
+</div>
+<div class="refsect1">
+<a name="gupnp-dlna-gupnp-dlna-restriction.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="gupnp-dlna-gupnp-dlna-restriction.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="GUPnPDLNARestriction-struct"></a><h3>GUPnPDLNARestriction</h3>
+<pre class="programlisting">typedef struct _GUPnPDLNARestriction GUPnPDLNARestriction;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-restriction-copy"></a><h3>gupnp_dlna_restriction_copy ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-gupnp-dlna-restriction.html#GUPnPDLNARestriction"><span class="returnvalue">GUPnPDLNARestriction</span></a> * gupnp_dlna_restriction_copy      (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-restriction.html#GUPnPDLNARestriction"><span class="type">GUPnPDLNARestriction</span></a> *restriction</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>restriction</code></em> :</span></p></td>
+<td>A restriction to copy. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A copy of <em class="parameter"><code>restriction</code></em>. <span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-restriction-free"></a><h3>gupnp_dlna_restriction_free ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gupnp_dlna_restriction_free         (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-restriction.html#GUPnPDLNARestriction"><span class="type">GUPnPDLNARestriction</span></a> *restriction</code></em>);</pre>
+<p>
+Frees <em class="parameter"><code>restriction</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>restriction</code></em> :</span></p></td>
+<td>A restriction to free.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-restriction-get-entries"></a><h3>gupnp_dlna_restriction_get_entries ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="returnvalue">GHashTable</span></a> *        gupnp_dlna_restriction_get_entries  (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-restriction.html#GUPnPDLNARestriction"><span class="type">GUPnPDLNARestriction</span></a> *restriction</code></em>);</pre>
+<p>
+Gets <em class="parameter"><code>restriction</code></em>'s entries. It is a string to <a class="link" href="gupnp-dlna-gupnp-dlna-value-list.html#GUPnPDLNAValueList"><span class="type">GUPnPDLNAValueList</span></a>
+mapping.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>restriction</code></em> :</span></p></td>
+<td>A restriction. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Entries. Do not modify. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8 GUPnPDLNAValueList]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-restriction-get-mime"></a><h3>gupnp_dlna_restriction_get_mime ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       gupnp_dlna_restriction_get_mime     (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-restriction.html#GUPnPDLNARestriction"><span class="type">GUPnPDLNARestriction</span></a> *restriction</code></em>);</pre>
+<p>
+Gets <em class="parameter"><code>restriction</code></em>'s MIME type.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>restriction</code></em> :</span></p></td>
+<td>A restriction. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>MIME type. Do not modify. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-restriction-is-empty"></a><h3>gupnp_dlna_restriction_is_empty ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_dlna_restriction_is_empty     (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-restriction.html#GUPnPDLNARestriction"><span class="type">GUPnPDLNARestriction</span></a> *restriction</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>restriction</code></em> :</span></p></td>
+<td>A restriction. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if <em class="parameter"><code>restriction</code></em> is empty and has no MIME type,
+otherwise <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-restriction-to-string"></a><h3>gupnp_dlna_restriction_to_string ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *             gupnp_dlna_restriction_to_string    (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-restriction.html#GUPnPDLNARestriction"><span class="type">GUPnPDLNARestriction</span></a> *restriction</code></em>);</pre>
+<p>
+Creates a string representation of <em class="parameter"><code>restriction</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>restriction</code></em> :</span></p></td>
+<td>A restriction. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A string representation of
+<em class="parameter"><code>restriction</code></em>. Free with <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a> when not needed. <span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.18</div>
+</body>
+</html>

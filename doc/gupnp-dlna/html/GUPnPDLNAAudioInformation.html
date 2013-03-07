@@ -1,0 +1,466 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GUPnPDLNAAudioInformation</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<link rel="home" href="index.html" title="GUPnP DLNA Reference Manual">
+<link rel="up" href="ch01.html" title="GUPnP DLNA">
+<link rel="prev" href="gupnp-dlna-GUPnP-DLNA-Values.html" title="GUPnP DLNA Values">
+<link rel="next" href="GUPnPDLNAContainerInformation.html" title="GUPnPDLNAContainerInformation">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="gupnp-dlna-GUPnP-DLNA-Values.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GUPnP DLNA Reference Manual</th>
+<td><a accesskey="n" href="GUPnPDLNAContainerInformation.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#GUPnPDLNAAudioInformation.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#GUPnPDLNAAudioInformation.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#GUPnPDLNAAudioInformation.object-hierarchy" class="shortcut">Object Hierarchy</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="GUPnPDLNAAudioInformation"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GUPnPDLNAAudioInformation.top_of_page"></a>GUPnPDLNAAudioInformation</span></h2>
+<p>GUPnPDLNAAudioInformation — Base class representing audio metadata needed
+for DLNA profiles matching.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="GUPnPDLNAAudioInformation.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">                    <a class="link" href="GUPnPDLNAAudioInformation.html#GUPnPDLNAAudioInformation-struct" title="GUPnPDLNAAudioInformation">GUPnPDLNAAudioInformation</a>;
+                    <a class="link" href="GUPnPDLNAAudioInformation.html#GUPnPDLNAAudioInformationClass" title="GUPnPDLNAAudioInformationClass">GUPnPDLNAAudioInformationClass</a>;
+<a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAIntValue" title="GUPnPDLNAIntValue"><span class="returnvalue">GUPnPDLNAIntValue</span></a>   <a class="link" href="GUPnPDLNAAudioInformation.html#gupnp-dlna-audio-information-get-bitrate" title="gupnp_dlna_audio_information_get_bitrate ()">gupnp_dlna_audio_information_get_bitrate</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> *info</code></em>);
+<a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAIntValue" title="GUPnPDLNAIntValue"><span class="returnvalue">GUPnPDLNAIntValue</span></a>   <a class="link" href="GUPnPDLNAAudioInformation.html#gupnp-dlna-audio-information-get-channels" title="gupnp_dlna_audio_information_get_channels ()">gupnp_dlna_audio_information_get_channels</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> *info</code></em>);
+<a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAIntValue" title="GUPnPDLNAIntValue"><span class="returnvalue">GUPnPDLNAIntValue</span></a>   <a class="link" href="GUPnPDLNAAudioInformation.html#gupnp-dlna-audio-information-get-depth" title="gupnp_dlna_audio_information_get_depth ()">gupnp_dlna_audio_information_get_depth</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> *info</code></em>);
+<a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAIntValue" title="GUPnPDLNAIntValue"><span class="returnvalue">GUPnPDLNAIntValue</span></a>   <a class="link" href="GUPnPDLNAAudioInformation.html#gupnp-dlna-audio-information-get-layer" title="gupnp_dlna_audio_information_get_layer ()">gupnp_dlna_audio_information_get_layer</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> *info</code></em>);
+<a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAStringValue" title="GUPnPDLNAStringValue"><span class="returnvalue">GUPnPDLNAStringValue</span></a> <a class="link" href="GUPnPDLNAAudioInformation.html#gupnp-dlna-audio-information-get-level" title="gupnp_dlna_audio_information_get_level ()">gupnp_dlna_audio_information_get_level</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> *info</code></em>);
+<a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAStringValue" title="GUPnPDLNAStringValue"><span class="returnvalue">GUPnPDLNAStringValue</span></a> <a class="link" href="GUPnPDLNAAudioInformation.html#gupnp-dlna-audio-information-get-mime" title="gupnp_dlna_audio_information_get_mime ()">gupnp_dlna_audio_information_get_mime</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> *info</code></em>);
+<a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAIntValue" title="GUPnPDLNAIntValue"><span class="returnvalue">GUPnPDLNAIntValue</span></a>   <a class="link" href="GUPnPDLNAAudioInformation.html#gupnp-dlna-audio-information-get-mpeg-audio-version" title="gupnp_dlna_audio_information_get_mpeg_audio_version ()">gupnp_dlna_audio_information_get_mpeg_audio_version</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> *info</code></em>);
+<a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAIntValue" title="GUPnPDLNAIntValue"><span class="returnvalue">GUPnPDLNAIntValue</span></a>   <a class="link" href="GUPnPDLNAAudioInformation.html#gupnp-dlna-audio-information-get-mpeg-version" title="gupnp_dlna_audio_information_get_mpeg_version ()">gupnp_dlna_audio_information_get_mpeg_version</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> *info</code></em>);
+<a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAStringValue" title="GUPnPDLNAStringValue"><span class="returnvalue">GUPnPDLNAStringValue</span></a> <a class="link" href="GUPnPDLNAAudioInformation.html#gupnp-dlna-audio-information-get-profile" title="gupnp_dlna_audio_information_get_profile ()">gupnp_dlna_audio_information_get_profile</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> *info</code></em>);
+<a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAIntValue" title="GUPnPDLNAIntValue"><span class="returnvalue">GUPnPDLNAIntValue</span></a>   <a class="link" href="GUPnPDLNAAudioInformation.html#gupnp-dlna-audio-information-get-rate" title="gupnp_dlna_audio_information_get_rate ()">gupnp_dlna_audio_information_get_rate</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> *info</code></em>);
+<a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAStringValue" title="GUPnPDLNAStringValue"><span class="returnvalue">GUPnPDLNAStringValue</span></a> <a class="link" href="GUPnPDLNAAudioInformation.html#gupnp-dlna-audio-information-get-stream-format" title="gupnp_dlna_audio_information_get_stream_format ()">gupnp_dlna_audio_information_get_stream_format</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> *info</code></em>);
+<a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAIntValue" title="GUPnPDLNAIntValue"><span class="returnvalue">GUPnPDLNAIntValue</span></a>   <a class="link" href="GUPnPDLNAAudioInformation.html#gupnp-dlna-audio-information-get-wma-version" title="gupnp_dlna_audio_information_get_wma_version ()">gupnp_dlna_audio_information_get_wma_version</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> *info</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="GUPnPDLNAAudioInformation.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+   +----GUPnPDLNAAudioInformation
+</pre>
+</div>
+<div class="refsect1">
+<a name="GUPnPDLNAAudioInformation.description"></a><h2>Description</h2>
+<p>
+<a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> holds all audio metadatas important for
+matching profiles. Note that it does not mean all data should be
+provided for every audio file as in some cases it does not make
+sense (e.g. WMA version does not make sense for MPEG audio files).
+</p>
+<p>
+For metadata attributes that do not exist in current audio file an
+unset value should be returned. For metadata attributes that do
+exist a set value with proper underlying value should be
+returned. In case metadata extractor has completely no clue how to
+extract some metadata attribute at all, an unsupported value should
+be returned. Note that unsupported values should be a temporary
+mean before fixing the multimedia framework to be able to extract
+such attribute.
+</p>
+<p>
+Note that <a class="link" href="GUPnPDLNAAudioInformation.html#gupnp-dlna-audio-information-get-mime" title="gupnp_dlna_audio_information_get_mime ()"><code class="function">gupnp_dlna_audio_information_get_mime()</code></a> should always
+return a set value. Otherwise it is highly probably that the file
+will not match against any DLNA profile.
+</p>
+</div>
+<div class="refsect1">
+<a name="GUPnPDLNAAudioInformation.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="GUPnPDLNAAudioInformation-struct"></a><h3>GUPnPDLNAAudioInformation</h3>
+<pre class="programlisting">typedef struct _GUPnPDLNAAudioInformation GUPnPDLNAAudioInformation;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GUPnPDLNAAudioInformationClass"></a><h3>GUPnPDLNAAudioInformationClass</h3>
+<pre class="programlisting">typedef struct {
+        GObjectClass parent_class;
+
+        GUPnPDLNAIntValue
+        (* get_bitrate) (GUPnPDLNAAudioInformation *info);
+
+        GUPnPDLNAIntValue
+        (* get_channels) (GUPnPDLNAAudioInformation *info);
+
+        GUPnPDLNAIntValue
+        (* get_depth) (GUPnPDLNAAudioInformation *info);
+
+        GUPnPDLNAIntValue
+        (* get_layer) (GUPnPDLNAAudioInformation *info);
+
+        GUPnPDLNAStringValue
+        (* get_level) (GUPnPDLNAAudioInformation *info);
+
+        GUPnPDLNAIntValue
+        (* get_mpeg_audio_version) (GUPnPDLNAAudioInformation *info);
+
+        GUPnPDLNAIntValue
+        (* get_mpeg_version) (GUPnPDLNAAudioInformation *info);
+
+        GUPnPDLNAStringValue
+        (* get_profile) (GUPnPDLNAAudioInformation *info);
+
+        GUPnPDLNAIntValue
+        (* get_rate) (GUPnPDLNAAudioInformation *info);
+
+        GUPnPDLNAStringValue
+        (* get_stream_format) (GUPnPDLNAAudioInformation *info);
+
+        GUPnPDLNAIntValue
+        (* get_wma_version) (GUPnPDLNAAudioInformation *info);
+
+        GUPnPDLNAStringValue
+        (* get_mime) (GUPnPDLNAAudioInformation *info);
+
+        gpointer _reserved[12];
+} GUPnPDLNAAudioInformationClass;
+</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObjectClass"><span class="type">GObjectClass</span></a> <em class="structfield"><code><a name="GUPnPDLNAAudioInformationClass.parent-class"></a>parent_class</code></em>;</span></p></td>
+<td>Parent class.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAAudioInformationClass.get-bitrate"></a>get_bitrate</code></em> ()</span></p></td>
+<td>This is called by <a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a> to get a
+bitrate.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAAudioInformationClass.get-channels"></a>get_channels</code></em> ()</span></p></td>
+<td>This is called by <a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a> to get a
+channels count.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAAudioInformationClass.get-depth"></a>get_depth</code></em> ()</span></p></td>
+<td>This is called by <a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a> to get a
+depth.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAAudioInformationClass.get-layer"></a>get_layer</code></em> ()</span></p></td>
+<td>This is called by <a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a> to get a
+layer.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAAudioInformationClass.get-level"></a>get_level</code></em> ()</span></p></td>
+<td>This is called by <a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a> to get a
+level.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAAudioInformationClass.get-mpeg-audio-version"></a>get_mpeg_audio_version</code></em> ()</span></p></td>
+<td>This is called by <a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a>
+to get an MPEG audio version.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAAudioInformationClass.get-mpeg-version"></a>get_mpeg_version</code></em> ()</span></p></td>
+<td>This is called by <a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a> to
+get an MPEG version.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAAudioInformationClass.get-profile"></a>get_profile</code></em> ()</span></p></td>
+<td>This is called by <a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a> to get a
+profile.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAAudioInformationClass.get-rate"></a>get_rate</code></em> ()</span></p></td>
+<td>This is called by <a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a> to get a
+sample rate.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAAudioInformationClass.get-stream-format"></a>get_stream_format</code></em> ()</span></p></td>
+<td>This is called by <a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a> to
+get a stream format.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAAudioInformationClass.get-wma-version"></a>get_wma_version</code></em> ()</span></p></td>
+<td>This is called by <a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a> to get
+a WMA version.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAAudioInformationClass.get-mime"></a>get_mime</code></em> ()</span></p></td>
+<td>This is called by <a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a> to get a MIME
+type.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="GUPnPDLNAAudioInformationClass.-reserved"></a>_reserved</code></em>[12];</span></p></td>
+<td>Padding. Ignore it.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-audio-information-get-bitrate"></a><h3>gupnp_dlna_audio_information_get_bitrate ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAIntValue" title="GUPnPDLNAIntValue"><span class="returnvalue">GUPnPDLNAIntValue</span></a>   gupnp_dlna_audio_information_get_bitrate
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> *info</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A bitrate.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-audio-information-get-channels"></a><h3>gupnp_dlna_audio_information_get_channels ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAIntValue" title="GUPnPDLNAIntValue"><span class="returnvalue">GUPnPDLNAIntValue</span></a>   gupnp_dlna_audio_information_get_channels
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> *info</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A number of channels.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-audio-information-get-depth"></a><h3>gupnp_dlna_audio_information_get_depth ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAIntValue" title="GUPnPDLNAIntValue"><span class="returnvalue">GUPnPDLNAIntValue</span></a>   gupnp_dlna_audio_information_get_depth
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> *info</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A depth.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-audio-information-get-layer"></a><h3>gupnp_dlna_audio_information_get_layer ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAIntValue" title="GUPnPDLNAIntValue"><span class="returnvalue">GUPnPDLNAIntValue</span></a>   gupnp_dlna_audio_information_get_layer
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> *info</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A layer.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-audio-information-get-level"></a><h3>gupnp_dlna_audio_information_get_level ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAStringValue" title="GUPnPDLNAStringValue"><span class="returnvalue">GUPnPDLNAStringValue</span></a> gupnp_dlna_audio_information_get_level
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> *info</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A level.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-audio-information-get-mime"></a><h3>gupnp_dlna_audio_information_get_mime ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAStringValue" title="GUPnPDLNAStringValue"><span class="returnvalue">GUPnPDLNAStringValue</span></a> gupnp_dlna_audio_information_get_mime
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> *info</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A MIME type.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-audio-information-get-mpeg-audio-version"></a><h3>gupnp_dlna_audio_information_get_mpeg_audio_version ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAIntValue" title="GUPnPDLNAIntValue"><span class="returnvalue">GUPnPDLNAIntValue</span></a>   gupnp_dlna_audio_information_get_mpeg_audio_version
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> *info</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>An MPEG audio version.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-audio-information-get-mpeg-version"></a><h3>gupnp_dlna_audio_information_get_mpeg_version ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAIntValue" title="GUPnPDLNAIntValue"><span class="returnvalue">GUPnPDLNAIntValue</span></a>   gupnp_dlna_audio_information_get_mpeg_version
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> *info</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>An MPEG version.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-audio-information-get-profile"></a><h3>gupnp_dlna_audio_information_get_profile ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAStringValue" title="GUPnPDLNAStringValue"><span class="returnvalue">GUPnPDLNAStringValue</span></a> gupnp_dlna_audio_information_get_profile
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> *info</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A profile.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-audio-information-get-rate"></a><h3>gupnp_dlna_audio_information_get_rate ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAIntValue" title="GUPnPDLNAIntValue"><span class="returnvalue">GUPnPDLNAIntValue</span></a>   gupnp_dlna_audio_information_get_rate
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> *info</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A sample rate.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-audio-information-get-stream-format"></a><h3>gupnp_dlna_audio_information_get_stream_format ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAStringValue" title="GUPnPDLNAStringValue"><span class="returnvalue">GUPnPDLNAStringValue</span></a> gupnp_dlna_audio_information_get_stream_format
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> *info</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A stream format.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-audio-information-get-wma-version"></a><h3>gupnp_dlna_audio_information_get_wma_version ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAIntValue" title="GUPnPDLNAIntValue"><span class="returnvalue">GUPnPDLNAIntValue</span></a>   gupnp_dlna_audio_information_get_wma_version
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> *info</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A WMA version.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GUPnPDLNAAudioInformation.see-also"></a><h2>See Also</h2>
+<a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNABoolValue" title="GUPnPDLNABoolValue"><span class="type">GUPnPDLNABoolValue</span></a>, <a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAFractionValue" title="GUPnPDLNAFractionValue"><span class="type">GUPnPDLNAFractionValue</span></a>,
+<a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAIntValue" title="GUPnPDLNAIntValue"><span class="type">GUPnPDLNAIntValue</span></a>, <a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAStringValue" title="GUPnPDLNAStringValue"><span class="type">GUPnPDLNAStringValue</span></a>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.18</div>
+</body>
+</html>

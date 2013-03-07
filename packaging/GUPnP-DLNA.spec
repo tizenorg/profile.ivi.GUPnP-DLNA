@@ -7,12 +7,12 @@
 
 Name:       gupnp-dlna
 Summary:    Utility library for easing DLNA-related tasks
-Version:    0.6.6
+Version:    0.10.0
 Release:    0
 Group:      Applications/Multimedia
 License:    LGPLv2.1
 URL:        http://www.gupnp.org
-Source0:    http://download.gnome.org/sources/%{name}/0.6/%{name}-%{version}.tar.gz
+Source0:    http://download.gnome.org/sources/%{name}/0.10/%{name}-%{version}.tar.gz
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
 BuildRequires:  pkgconfig(glib-2.0)
@@ -51,7 +51,7 @@ Files for development with gupnp-dlna
 # >> build pre
 # << build pre
 
-%configure --disable-static
+%configure --disable-static --disable-gstreamer-metadata-backend --enable-legacy-gstreamer-metadata-backend --with-default-metadata-backend=gstreamer-legacy 
 make %{?jobs:-j%jobs}
 
 # >> build post
@@ -79,33 +79,50 @@ rm -rf  $RPM_BUILD_ROOT%{_datadir}/gtk-doc
 %files
 %defattr(-,root,root,-)
 # >> files
-%{_bindir}/gupnp-dlna-info
-%{_bindir}/gupnp-dlna-ls-profiles
-%{_libdir}/libgupnp-dlna-1.0.so.*
-%{_datadir}/gupnp-dlna/dlna-profiles/aac.xml
-%{_datadir}/gupnp-dlna/dlna-profiles/ac3.xml
-%{_datadir}/gupnp-dlna/dlna-profiles/amr.xml
-%{_datadir}/gupnp-dlna/dlna-profiles/avc.xml
-%{_datadir}/gupnp-dlna/dlna-profiles/common.xml
-%{_datadir}/gupnp-dlna/dlna-profiles/dlna-profiles.rng
-%{_datadir}/gupnp-dlna/dlna-profiles/jpeg.xml
-%{_datadir}/gupnp-dlna/dlna-profiles/lpcm.xml
-%{_datadir}/gupnp-dlna/dlna-profiles/mp3.xml
-%{_datadir}/gupnp-dlna/dlna-profiles/mpeg-ts.xml
-%{_datadir}/gupnp-dlna/dlna-profiles/mpeg1.xml
-%{_datadir}/gupnp-dlna/dlna-profiles/mpeg4.xml
-%{_datadir}/gupnp-dlna/dlna-profiles/png.xml
-%{_datadir}/gupnp-dlna/dlna-profiles/wma.xml
+%{_bindir}/gupnp-dlna-info-2.0
+%{_bindir}/gupnp-dlna-ls-profiles-2.0
+%{_libdir}/libgupnp-dlna-2.0.so.*
+%{_libdir}/libgupnp-dlna-gst-legacy-2.0.so.*
+%{_libdir}/gupnp-dlna/libgstreamer-legacy.so
+%{_datadir}/gupnp-dlna-2.0/dlna-profiles/aac.xml
+%{_datadir}/gupnp-dlna-2.0/dlna-profiles/ac3.xml
+%{_datadir}/gupnp-dlna-2.0/dlna-profiles/amr.xml
+%{_datadir}/gupnp-dlna-2.0/dlna-profiles/avc.xml
+%{_datadir}/gupnp-dlna-2.0/dlna-profiles/common.xml
+%{_datadir}/gupnp-dlna-2.0/dlna-profiles/dlna-profiles.rng
+%{_datadir}/gupnp-dlna-2.0/dlna-profiles/jpeg.xml
+%{_datadir}/gupnp-dlna-2.0/dlna-profiles/lpcm.xml
+%{_datadir}/gupnp-dlna-2.0/dlna-profiles/mp3.xml
+%{_datadir}/gupnp-dlna-2.0/dlna-profiles/mpeg-ts.xml
+%{_datadir}/gupnp-dlna-2.0/dlna-profiles/mpeg1.xml
+%{_datadir}/gupnp-dlna-2.0/dlna-profiles/mpeg4.xml
+%{_datadir}/gupnp-dlna-2.0/dlna-profiles/png.xml
+%{_datadir}/gupnp-dlna-2.0/dlna-profiles/wma.xml
 # << files
 
 
 %files devel
 %defattr(-,root,root,-)
 # >> files devel
-%{_includedir}/gupnp-dlna-1.0/libgupnp-dlna/gupnp-dlna-discoverer.h
-%{_includedir}/gupnp-dlna-1.0/libgupnp-dlna/gupnp-dlna-information.h
-%{_includedir}/gupnp-dlna-1.0/libgupnp-dlna/gupnp-dlna-profile.h
-%{_libdir}/pkgconfig/gupnp-dlna-1.0.pc
-%{_libdir}/libgupnp-dlna-1.0.so
+%{_includedir}/gupnp-dlna-2.0/libgupnp-dlna/gupnp-dlna.h
+%{_includedir}/gupnp-dlna-2.0/libgupnp-dlna/gupnp-dlna-audio-information.h
+%{_includedir}/gupnp-dlna-2.0/libgupnp-dlna/gupnp-dlna-container-information.h
+%{_includedir}/gupnp-dlna-2.0/libgupnp-dlna/gupnp-dlna-gst-legacy-utils.h
+%{_includedir}/gupnp-dlna-2.0/libgupnp-dlna/gupnp-dlna-g-values.h
+%{_includedir}/gupnp-dlna-2.0/libgupnp-dlna/gupnp-dlna-image-information.h
+%{_includedir}/gupnp-dlna-2.0/libgupnp-dlna/gupnp-dlna-information.h
+%{_includedir}/gupnp-dlna-2.0/libgupnp-dlna/gupnp-dlna-profile.h
+%{_includedir}/gupnp-dlna-2.0/libgupnp-dlna/gupnp-dlna-profile-guesser.h
+%{_includedir}/gupnp-dlna-2.0/libgupnp-dlna/gupnp-dlna-restriction.h
+%{_includedir}/gupnp-dlna-2.0/libgupnp-dlna/gupnp-dlna-value-list.h
+%{_includedir}/gupnp-dlna-2.0/libgupnp-dlna/gupnp-dlna-values.h
+%{_includedir}/gupnp-dlna-2.0/libgupnp-dlna/gupnp-dlna-video-information.h
+%{_includedir}/gupnp-dlna-2.0/libgupnp-dlna/metadata/gupnp-dlna-metadata-extractor.h
+%{_libdir}/pkgconfig/gupnp-dlna-2.0.pc
+%{_libdir}/pkgconfig/gupnp-dlna-metadata-2.0.pc
+%{_libdir}/pkgconfig/gupnp-dlna-gst-legacy-2.0.pc
+%{_libdir}/libgupnp-dlna-2.0.so
+%{_libdir}/libgupnp-dlna-gst-legacy-2.0.so
+%{_libdir}/gupnp-dlna/libgstreamer-legacy.so
 # << files devel
 

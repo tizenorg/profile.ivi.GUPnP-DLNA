@@ -1,0 +1,316 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>gupnp-dlna-g-values</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<link rel="home" href="index.html" title="GUPnP DLNA Reference Manual">
+<link rel="up" href="ch01.html" title="GUPnP DLNA">
+<link rel="prev" href="gupnp-dlna-gupnp-dlna-value-list.html" title="gupnp-dlna-value-list">
+<link rel="next" href="annotation-glossary.html" title="Annotation Glossary">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="gupnp-dlna-gupnp-dlna-value-list.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GUPnP DLNA Reference Manual</th>
+<td><a accesskey="n" href="annotation-glossary.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#gupnp-dlna-gupnp-dlna-g-values.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#gupnp-dlna-gupnp-dlna-g-values.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#gupnp-dlna-gupnp-dlna-g-values.object-hierarchy" class="shortcut">Object Hierarchy</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="gupnp-dlna-gupnp-dlna-g-values"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="gupnp-dlna-gupnp-dlna-g-values.top_of_page"></a>gupnp-dlna-g-values</span></h2>
+<p>gupnp-dlna-g-values</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="gupnp-dlna-gupnp-dlna-g-values.synopsis"></a><h2>Synopsis</h2>
+<a name="GUPnPDLNAFraction"></a><a name="GUPnPDLNAFractionRange"></a><a name="GUPnPDLNAIntRange"></a><pre class="synopsis">                    <a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAFraction-struct" title="GUPnPDLNAFraction">GUPnPDLNAFraction</a>;
+                    <a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAFractionRange-struct" title="GUPnPDLNAFractionRange">GUPnPDLNAFractionRange</a>;
+                    <a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAIntRange-struct" title="GUPnPDLNAIntRange">GUPnPDLNAIntRange</a>;
+<a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAFraction"><span class="returnvalue">GUPnPDLNAFraction</span></a> * <a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#gupnp-dlna-fraction-copy" title="gupnp_dlna_fraction_copy ()">gupnp_dlna_fraction_copy</a>            (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAFraction"><span class="type">GUPnPDLNAFraction</span></a> *fraction</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#gupnp-dlna-fraction-free" title="gupnp_dlna_fraction_free ()">gupnp_dlna_fraction_free</a>            (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAFraction"><span class="type">GUPnPDLNAFraction</span></a> *fraction</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>                <a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#gupnp-dlna-fraction-get-denominator" title="gupnp_dlna_fraction_get_denominator ()">gupnp_dlna_fraction_get_denominator</a> (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAFraction"><span class="type">GUPnPDLNAFraction</span></a> *fraction</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>                <a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#gupnp-dlna-fraction-get-numerator" title="gupnp_dlna_fraction_get_numerator ()">gupnp_dlna_fraction_get_numerator</a>   (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAFraction"><span class="type">GUPnPDLNAFraction</span></a> *fraction</code></em>);
+<a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAFractionRange"><span class="returnvalue">GUPnPDLNAFractionRange</span></a> * <a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#gupnp-dlna-fraction-range-copy" title="gupnp_dlna_fraction_range_copy ()">gupnp_dlna_fraction_range_copy</a> (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAFractionRange"><span class="type">GUPnPDLNAFractionRange</span></a> *range</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#gupnp-dlna-fraction-range-free" title="gupnp_dlna_fraction_range_free ()">gupnp_dlna_fraction_range_free</a>      (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAFractionRange"><span class="type">GUPnPDLNAFractionRange</span></a> *range</code></em>);
+<a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAFraction"><span class="returnvalue">GUPnPDLNAFraction</span></a> * <a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#gupnp-dlna-fraction-range-get-max" title="gupnp_dlna_fraction_range_get_max ()">gupnp_dlna_fraction_range_get_max</a>   (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAFractionRange"><span class="type">GUPnPDLNAFractionRange</span></a> *range</code></em>);
+<a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAFraction"><span class="returnvalue">GUPnPDLNAFraction</span></a> * <a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#gupnp-dlna-fraction-range-get-min" title="gupnp_dlna_fraction_range_get_min ()">gupnp_dlna_fraction_range_get_min</a>   (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAFractionRange"><span class="type">GUPnPDLNAFractionRange</span></a> *range</code></em>);
+<a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAIntRange"><span class="returnvalue">GUPnPDLNAIntRange</span></a> * <a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#gupnp-dlna-int-range-copy" title="gupnp_dlna_int_range_copy ()">gupnp_dlna_int_range_copy</a>           (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAIntRange"><span class="type">GUPnPDLNAIntRange</span></a> *range</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#gupnp-dlna-int-range-free" title="gupnp_dlna_int_range_free ()">gupnp_dlna_int_range_free</a>           (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAIntRange"><span class="type">GUPnPDLNAIntRange</span></a> *range</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>                <a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#gupnp-dlna-int-range-get-max" title="gupnp_dlna_int_range_get_max ()">gupnp_dlna_int_range_get_max</a>        (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAIntRange"><span class="type">GUPnPDLNAIntRange</span></a> *range</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>                <a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#gupnp-dlna-int-range-get-min" title="gupnp_dlna_int_range_get_min ()">gupnp_dlna_int_range_get_min</a>        (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAIntRange"><span class="type">GUPnPDLNAIntRange</span></a> *range</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="gupnp-dlna-gupnp-dlna-g-values.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GBoxed
+   +----GUPnPDLNAFraction
+</pre>
+<pre class="synopsis">
+  GBoxed
+   +----GUPnPDLNAFractionRange
+</pre>
+<pre class="synopsis">
+  GBoxed
+   +----GUPnPDLNAIntRange
+</pre>
+</div>
+<div class="refsect1">
+<a name="gupnp-dlna-gupnp-dlna-g-values.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="gupnp-dlna-gupnp-dlna-g-values.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="GUPnPDLNAFraction-struct"></a><h3>GUPnPDLNAFraction</h3>
+<pre class="programlisting">typedef struct _GUPnPDLNAFraction GUPnPDLNAFraction;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GUPnPDLNAFractionRange-struct"></a><h3>GUPnPDLNAFractionRange</h3>
+<pre class="programlisting">typedef struct _GUPnPDLNAFractionRange GUPnPDLNAFractionRange;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GUPnPDLNAIntRange-struct"></a><h3>GUPnPDLNAIntRange</h3>
+<pre class="programlisting">typedef struct _GUPnPDLNAIntRange GUPnPDLNAIntRange;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-fraction-copy"></a><h3>gupnp_dlna_fraction_copy ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAFraction"><span class="returnvalue">GUPnPDLNAFraction</span></a> * gupnp_dlna_fraction_copy            (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAFraction"><span class="type">GUPnPDLNAFraction</span></a> *fraction</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>fraction</code></em> :</span></p></td>
+<td>A fraction to copy. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A copy of <em class="parameter"><code>fraction</code></em>. <span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-fraction-free"></a><h3>gupnp_dlna_fraction_free ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gupnp_dlna_fraction_free            (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAFraction"><span class="type">GUPnPDLNAFraction</span></a> *fraction</code></em>);</pre>
+<p>
+Frees <em class="parameter"><code>fraction</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>fraction</code></em> :</span></p></td>
+<td>A fraction to free.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-fraction-get-denominator"></a><h3>gupnp_dlna_fraction_get_denominator ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>                gupnp_dlna_fraction_get_denominator (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAFraction"><span class="type">GUPnPDLNAFraction</span></a> *fraction</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>fraction</code></em> :</span></p></td>
+<td>A fraction.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<em class="parameter"><code>fraction</code></em>'s denominator.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-fraction-get-numerator"></a><h3>gupnp_dlna_fraction_get_numerator ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>                gupnp_dlna_fraction_get_numerator   (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAFraction"><span class="type">GUPnPDLNAFraction</span></a> *fraction</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>fraction</code></em> :</span></p></td>
+<td>A fraction.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<em class="parameter"><code>fraction</code></em>'s numerator.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-fraction-range-copy"></a><h3>gupnp_dlna_fraction_range_copy ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAFractionRange"><span class="returnvalue">GUPnPDLNAFractionRange</span></a> * gupnp_dlna_fraction_range_copy (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAFractionRange"><span class="type">GUPnPDLNAFractionRange</span></a> *range</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>range</code></em> :</span></p></td>
+<td>A range to copy. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A copy of <em class="parameter"><code>range</code></em>. <span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-fraction-range-free"></a><h3>gupnp_dlna_fraction_range_free ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gupnp_dlna_fraction_range_free      (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAFractionRange"><span class="type">GUPnPDLNAFractionRange</span></a> *range</code></em>);</pre>
+<p>
+Frees <em class="parameter"><code>range</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>range</code></em> :</span></p></td>
+<td>A range to free.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-fraction-range-get-max"></a><h3>gupnp_dlna_fraction_range_get_max ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAFraction"><span class="returnvalue">GUPnPDLNAFraction</span></a> * gupnp_dlna_fraction_range_get_max   (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAFractionRange"><span class="type">GUPnPDLNAFractionRange</span></a> *range</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>range</code></em> :</span></p></td>
+<td>A range.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Maximum value of <em class="parameter"><code>range</code></em>. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-fraction-range-get-min"></a><h3>gupnp_dlna_fraction_range_get_min ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAFraction"><span class="returnvalue">GUPnPDLNAFraction</span></a> * gupnp_dlna_fraction_range_get_min   (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAFractionRange"><span class="type">GUPnPDLNAFractionRange</span></a> *range</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>range</code></em> :</span></p></td>
+<td>A range.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Minimum value of <em class="parameter"><code>range</code></em>. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-int-range-copy"></a><h3>gupnp_dlna_int_range_copy ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAIntRange"><span class="returnvalue">GUPnPDLNAIntRange</span></a> * gupnp_dlna_int_range_copy           (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAIntRange"><span class="type">GUPnPDLNAIntRange</span></a> *range</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>range</code></em> :</span></p></td>
+<td>A range to copy. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A copy of <em class="parameter"><code>range</code></em>. <span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-int-range-free"></a><h3>gupnp_dlna_int_range_free ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gupnp_dlna_int_range_free           (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAIntRange"><span class="type">GUPnPDLNAIntRange</span></a> *range</code></em>);</pre>
+<p>
+Frees <em class="parameter"><code>range</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>range</code></em> :</span></p></td>
+<td>A range to free.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-int-range-get-max"></a><h3>gupnp_dlna_int_range_get_max ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>                gupnp_dlna_int_range_get_max        (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAIntRange"><span class="type">GUPnPDLNAIntRange</span></a> *range</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>range</code></em> :</span></p></td>
+<td>A range.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Maximum value of <em class="parameter"><code>range</code></em>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-int-range-get-min"></a><h3>gupnp_dlna_int_range_get_min ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>                gupnp_dlna_int_range_get_min        (<em class="parameter"><code><a class="link" href="gupnp-dlna-gupnp-dlna-g-values.html#GUPnPDLNAIntRange"><span class="type">GUPnPDLNAIntRange</span></a> *range</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>range</code></em> :</span></p></td>
+<td>A range.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Minimum value of <em class="parameter"><code>range</code></em>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.18</div>
+</body>
+</html>

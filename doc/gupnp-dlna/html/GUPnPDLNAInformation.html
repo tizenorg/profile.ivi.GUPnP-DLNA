@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GUPnPDLNAInformation</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<link rel="home" href="index.html" title="GUPnP DLNA Reference Manual">
+<link rel="up" href="ch01.html" title="GUPnP DLNA">
+<link rel="prev" href="GUPnPDLNAProfile.html" title="GUPnPDLNAProfile">
+<link rel="next" href="gupnp-dlna-GUPnP-DLNA-Values.html" title="GUPnP DLNA Values">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="GUPnPDLNAProfile.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GUPnP DLNA Reference Manual</th>
+<td><a accesskey="n" href="gupnp-dlna-GUPnP-DLNA-Values.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#GUPnPDLNAInformation.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#GUPnPDLNAInformation.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#GUPnPDLNAInformation.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#GUPnPDLNAInformation.properties" class="shortcut">Properties</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="GUPnPDLNAInformation"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GUPnPDLNAInformation.top_of_page"></a>GUPnPDLNAInformation</span></h2>
+<p>GUPnPDLNAInformation — Base class for storing various types of
+metadata informations.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="GUPnPDLNAInformation.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">                    <a class="link" href="GUPnPDLNAInformation.html#GUPnPDLNAInformation-struct" title="GUPnPDLNAInformation">GUPnPDLNAInformation</a>;
+                    <a class="link" href="GUPnPDLNAInformation.html#GUPnPDLNAInformationClass" title="GUPnPDLNAInformationClass">GUPnPDLNAInformationClass</a>;
+<a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="returnvalue">GUPnPDLNAAudioInformation</span></a> * <a class="link" href="GUPnPDLNAInformation.html#gupnp-dlna-information-get-audio-information" title="gupnp_dlna_information_get_audio_information ()">gupnp_dlna_information_get_audio_information</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAInformation.html" title="GUPnPDLNAInformation"><span class="type">GUPnPDLNAInformation</span></a> *info</code></em>);
+<a class="link" href="GUPnPDLNAContainerInformation.html" title="GUPnPDLNAContainerInformation"><span class="returnvalue">GUPnPDLNAContainerInformation</span></a> * <a class="link" href="GUPnPDLNAInformation.html#gupnp-dlna-information-get-container-information" title="gupnp_dlna_information_get_container_information ()">gupnp_dlna_information_get_container_information</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAInformation.html" title="GUPnPDLNAInformation"><span class="type">GUPnPDLNAInformation</span></a> *info</code></em>);
+<a class="link" href="GUPnPDLNAImageInformation.html" title="GUPnPDLNAImageInformation"><span class="returnvalue">GUPnPDLNAImageInformation</span></a> * <a class="link" href="GUPnPDLNAInformation.html#gupnp-dlna-information-get-image-information" title="gupnp_dlna_information_get_image_information ()">gupnp_dlna_information_get_image_information</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAInformation.html" title="GUPnPDLNAInformation"><span class="type">GUPnPDLNAInformation</span></a> *info</code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="GUPnPDLNAInformation.html#gupnp-dlna-information-get-uri" title="gupnp_dlna_information_get_uri ()">gupnp_dlna_information_get_uri</a>      (<em class="parameter"><code><a class="link" href="GUPnPDLNAInformation.html" title="GUPnPDLNAInformation"><span class="type">GUPnPDLNAInformation</span></a> *info</code></em>);
+<a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="returnvalue">GUPnPDLNAVideoInformation</span></a> * <a class="link" href="GUPnPDLNAInformation.html#gupnp-dlna-information-get-video-information" title="gupnp_dlna_information_get_video_information ()">gupnp_dlna_information_get_video_information</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAInformation.html" title="GUPnPDLNAInformation"><span class="type">GUPnPDLNAInformation</span></a> *info</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="GUPnPDLNAInformation.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+   +----GUPnPDLNAInformation
+</pre>
+</div>
+<div class="refsect1">
+<a name="GUPnPDLNAInformation.properties"></a><h2>Properties</h2>
+<pre class="synopsis">
+  "<a class="link" href="GUPnPDLNAInformation.html#GUPnPDLNAInformation--audio-information" title='The "audio-information" property'>audio-information</a>"        <a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a>*  : Read
+  "<a class="link" href="GUPnPDLNAInformation.html#GUPnPDLNAInformation--container-information" title='The "container-information" property'>container-information</a>"    <a class="link" href="GUPnPDLNAContainerInformation.html" title="GUPnPDLNAContainerInformation"><span class="type">GUPnPDLNAContainerInformation</span></a>*  : Read
+  "<a class="link" href="GUPnPDLNAInformation.html#GUPnPDLNAInformation--image-information" title='The "image-information" property'>image-information</a>"        <a class="link" href="GUPnPDLNAImageInformation.html" title="GUPnPDLNAImageInformation"><span class="type">GUPnPDLNAImageInformation</span></a>*  : Read
+  "<a class="link" href="GUPnPDLNAInformation.html#GUPnPDLNAInformation--uri" title='The "uri" property'>uri</a>"                      <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only
+  "<a class="link" href="GUPnPDLNAInformation.html#GUPnPDLNAInformation--video-information" title='The "video-information" property'>video-information</a>"        <a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a>*  : Read
+</pre>
+</div>
+<div class="refsect1">
+<a name="GUPnPDLNAInformation.description"></a><h2>Description</h2>
+<p>
+Subclasses of <a class="link" href="GUPnPDLNAInformation.html" title="GUPnPDLNAInformation"><span class="type">GUPnPDLNAInformation</span></a> should override all virtual
+functions provided by this class. The overrides should return a
+subclasses of specific information base classes.
+</p>
+<p>
+When instantiating a subclass of <a class="link" href="GUPnPDLNAInformation.html" title="GUPnPDLNAInformation"><span class="type">GUPnPDLNAInformation</span></a> make sure
+that "uri" with a URI to media file is passed to <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#g-object-new"><code class="function">g_object_new()</code></a>.
+</p>
+</div>
+<div class="refsect1">
+<a name="GUPnPDLNAInformation.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="GUPnPDLNAInformation-struct"></a><h3>GUPnPDLNAInformation</h3>
+<pre class="programlisting">typedef struct _GUPnPDLNAInformation GUPnPDLNAInformation;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GUPnPDLNAInformationClass"></a><h3>GUPnPDLNAInformationClass</h3>
+<pre class="programlisting">typedef struct {
+        GObjectClass parent_class;
+
+        GUPnPDLNAAudioInformation *
+        (* get_audio_information) (GUPnPDLNAInformation *info);
+
+        GUPnPDLNAContainerInformation *
+        (* get_container_information) (GUPnPDLNAInformation *info);
+
+        GUPnPDLNAImageInformation *
+        (* get_image_information) (GUPnPDLNAInformation *info);
+
+        GUPnPDLNAVideoInformation *
+        (* get_video_information) (GUPnPDLNAInformation *info);
+
+        gpointer _reserved[12];
+} GUPnPDLNAInformationClass;
+</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObjectClass"><span class="type">GObjectClass</span></a> <em class="structfield"><code><a name="GUPnPDLNAInformationClass.parent-class"></a>parent_class</code></em>;</span></p></td>
+<td>Parent class.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAInformationClass.get-audio-information"></a>get_audio_information</code></em> ()</span></p></td>
+<td>This is called by <a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a>
+to get an audio information.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAInformationClass.get-container-information"></a>get_container_information</code></em> ()</span></p></td>
+<td>This is called by
+<a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a> to get a container information.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAInformationClass.get-image-information"></a>get_image_information</code></em> ()</span></p></td>
+<td>This is called by <a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a>
+to get an image information.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAInformationClass.get-video-information"></a>get_video_information</code></em> ()</span></p></td>
+<td>This is called by <a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a>
+to get a video information.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="GUPnPDLNAInformationClass.-reserved"></a>_reserved</code></em>[12];</span></p></td>
+<td>Padding. Ignore it.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-information-get-audio-information"></a><h3>gupnp_dlna_information_get_audio_information ()</h3>
+<pre class="programlisting"><a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="returnvalue">GUPnPDLNAAudioInformation</span></a> * gupnp_dlna_information_get_audio_information
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAInformation.html" title="GUPnPDLNAInformation"><span class="type">GUPnPDLNAInformation</span></a> *info</code></em>);</pre>
+<p>
+Get an audio information of media file if applicable (e.g. for
+video and audio files).
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAInformation.html" title="GUPnPDLNAInformation"><span class="type">GUPnPDLNAInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a> object or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-information-get-container-information"></a><h3>gupnp_dlna_information_get_container_information ()</h3>
+<pre class="programlisting"><a class="link" href="GUPnPDLNAContainerInformation.html" title="GUPnPDLNAContainerInformation"><span class="returnvalue">GUPnPDLNAContainerInformation</span></a> * gupnp_dlna_information_get_container_information
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAInformation.html" title="GUPnPDLNAInformation"><span class="type">GUPnPDLNAInformation</span></a> *info</code></em>);</pre>
+<p>
+Get an container information of media file if applicable (e.g. for
+video and audio files).
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAInformation.html" title="GUPnPDLNAInformation"><span class="type">GUPnPDLNAInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAContainerInformation.html" title="GUPnPDLNAContainerInformation"><span class="type">GUPnPDLNAContainerInformation</span></a> object or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-information-get-image-information"></a><h3>gupnp_dlna_information_get_image_information ()</h3>
+<pre class="programlisting"><a class="link" href="GUPnPDLNAImageInformation.html" title="GUPnPDLNAImageInformation"><span class="returnvalue">GUPnPDLNAImageInformation</span></a> * gupnp_dlna_information_get_image_information
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAInformation.html" title="GUPnPDLNAInformation"><span class="type">GUPnPDLNAInformation</span></a> *info</code></em>);</pre>
+<p>
+Get an container information of media file if applicable (e.g. for
+image files).
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAInformation.html" title="GUPnPDLNAInformation"><span class="type">GUPnPDLNAInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAImageInformation.html" title="GUPnPDLNAImageInformation"><span class="type">GUPnPDLNAImageInformation</span></a> object or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-information-get-uri"></a><h3>gupnp_dlna_information_get_uri ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       gupnp_dlna_information_get_uri      (<em class="parameter"><code><a class="link" href="GUPnPDLNAInformation.html" title="GUPnPDLNAInformation"><span class="type">GUPnPDLNAInformation</span></a> *info</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAInformation.html" title="GUPnPDLNAInformation"><span class="type">GUPnPDLNAInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>An URI of a file. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-information-get-video-information"></a><h3>gupnp_dlna_information_get_video_information ()</h3>
+<pre class="programlisting"><a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="returnvalue">GUPnPDLNAVideoInformation</span></a> * gupnp_dlna_information_get_video_information
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAInformation.html" title="GUPnPDLNAInformation"><span class="type">GUPnPDLNAInformation</span></a> *info</code></em>);</pre>
+<p>
+Get an container information of media file if applicable (e.g. for
+video files).
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAInformation.html" title="GUPnPDLNAInformation"><span class="type">GUPnPDLNAInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> object or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GUPnPDLNAInformation.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="GUPnPDLNAInformation--audio-information"></a><h3>The <code class="literal">"audio-information"</code> property</h3>
+<pre class="programlisting">  "audio-information"        <a class="link" href="GUPnPDLNAAudioInformation.html" title="GUPnPDLNAAudioInformation"><span class="type">GUPnPDLNAAudioInformation</span></a>*  : Read</pre>
+<p>
+Audio information of a file.
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GUPnPDLNAInformation--container-information"></a><h3>The <code class="literal">"container-information"</code> property</h3>
+<pre class="programlisting">  "container-information"    <a class="link" href="GUPnPDLNAContainerInformation.html" title="GUPnPDLNAContainerInformation"><span class="type">GUPnPDLNAContainerInformation</span></a>*  : Read</pre>
+<p>
+Container information of a file.
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GUPnPDLNAInformation--image-information"></a><h3>The <code class="literal">"image-information"</code> property</h3>
+<pre class="programlisting">  "image-information"        <a class="link" href="GUPnPDLNAImageInformation.html" title="GUPnPDLNAImageInformation"><span class="type">GUPnPDLNAImageInformation</span></a>*  : Read</pre>
+<p>
+Image information of a file.
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GUPnPDLNAInformation--uri"></a><h3>The <code class="literal">"uri"</code> property</h3>
+<pre class="programlisting">  "uri"                      <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a>*                : Read / Write / Construct Only</pre>
+<p>
+URI of file which metadata this object stores.
+</p>
+<p>Default value: NULL</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GUPnPDLNAInformation--video-information"></a><h3>The <code class="literal">"video-information"</code> property</h3>
+<pre class="programlisting">  "video-information"        <a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a>*  : Read</pre>
+<p>
+Video information of a file.
+</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.18</div>
+</body>
+</html>

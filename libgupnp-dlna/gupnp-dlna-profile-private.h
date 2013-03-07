@@ -1,7 +1,7 @@
 /*
- * Copyright (C) 2011 Nokia Corporation.
+ * Copyright (C) 2012 Intel Corporation.
  *
- * Authors: Parthasarathi Susarla <partha.susarla@collabora.co.uk>
+ * Authors: Krzesimir Nowak <krnowak@openismus.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -15,29 +15,26 @@
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
  */
+
 #ifndef __GUPNP_DLNA_PROFILE_PRIVATE_H__
 #define __GUPNP_DLNA_PROFILE_PRIVATE_H__
 
+#include <glib-object.h>
+#include "gupnp-dlna-profile.h"
+
 G_BEGIN_DECLS
 
-GUPnPDLNAProfile * gupnp_dlna_profile_new (gchar     *name,
-                                           gchar     *mime,
-                                           GstCaps   *container_caps,
-                                           GstCaps   *video_caps,
-                                           GstCaps   *audio_caps,
-                                           gboolean  extended);
-
-
-const GstCaps * gupnp_dlna_profile_get_container_caps (GUPnPDLNAProfile *self);
-const GstCaps * gupnp_dlna_profile_get_video_caps (GUPnPDLNAProfile *self);
-const GstCaps * gupnp_dlna_profile_get_audio_caps (GUPnPDLNAProfile *self);
-
-void gupnp_dlna_profile_set_container_caps (GUPnPDLNAProfile *self, GstCaps *caps);
-void gupnp_dlna_profile_set_video_caps (GUPnPDLNAProfile *self, GstCaps *caps);
-void gupnp_dlna_profile_set_audio_caps (GUPnPDLNAProfile *self, GstCaps *caps);
+GUPnPDLNAProfile *
+gupnp_dlna_profile_new (const gchar *name,
+                        const gchar *mime,
+                        GList       *audio_restrictions,
+                        GList       *container_restrictions,
+                        GList       *image_restrictions,
+                        GList       *video_restrictions,
+                        gboolean     extended);
 
 G_END_DECLS
 

@@ -1,7 +1,7 @@
 /*
- * Copyright (C) 2010 Nokia Corporation.
+ * Copyright (C) 2012 Intel Corporation.
  *
- * Authors: Arun Raghavan <arun.raghavan@collabora.co.uk>
+ * Authors: Krzesimir Nowak <krnowak@openismus.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -15,65 +15,102 @@
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
  */
 
 #ifndef __GUPNP_DLNA_INFORMATION_H__
 #define __GUPNP_DLNA_INFORMATION_H__
 
-#include <gst/pbutils/pbutils.h>
 #include <glib-object.h>
+#include <libgupnp-dlna/gupnp-dlna-audio-information.h>
+#include <libgupnp-dlna/gupnp-dlna-container-information.h>
+#include <libgupnp-dlna/gupnp-dlna-image-information.h>
+#include <libgupnp-dlna/gupnp-dlna-video-information.h>
 
 G_BEGIN_DECLS
 
-#define GUPNP_TYPE_DLNA_INFORMATION gupnp_dlna_information_get_type()
+#define GUPNP_TYPE_DLNA_INFORMATION (gupnp_dlna_information_get_type())
 
-#define GUPNP_DLNA_INFORMATION(obj)                                     \
-        (G_TYPE_CHECK_INSTANCE_CAST ((obj),                             \
-                                     GUPNP_TYPE_DLNA_INFORMATION,       \
+#define GUPNP_DLNA_INFORMATION(obj) \
+        (G_TYPE_CHECK_INSTANCE_CAST ((obj), \
+                                     GUPNP_TYPE_DLNA_INFORMATION, \
                                      GUPnPDLNAInformation))
 
-#define GUPNP_DLNA_INFORMATION_CLASS(klass)                             \
-        (G_TYPE_CHECK_CLASS_CAST ((klass),                              \
-                                  GUPNP_TYPE_DLNA_INFORMATION,          \
+#define GUPNP_DLNA_INFORMATION_CLASS(klass) \
+        (G_TYPE_CHECK_CLASS_CAST ((klass), \
+                                  GUPNP_TYPE_DLNA_INFORMATION, \
                                   GUPnPDLNAInformationClass))
 
-#define GUPNP_IS_DLNA_INFORMATION(obj)                                  \
-        (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GUPNP_TYPE_DLNA_INFORMATION))
+#define GUPNP_IS_DLNA_INFORMATION(obj) \
+        (G_TYPE_CHECK_INSTANCE_TYPE ((obj), \
+                                     GUPNP_TYPE_DLNA_INFORMATION))
 
-#define GUPNP_IS_DLNA_INFORMATION_CLASS(klass)                          \
-        (G_TYPE_CHECK_CLASS_TYPE ((klass), GUPNP_TYPE_DLNA_INFORMATION))
+#define GUPNP_IS_DLNA_INFORMATION_CLASS(klass) \
+        (G_TYPE_CHECK_CLASS_TYPE ((klass), \
+                                  GUPNP_TYPE_DLNA_INFORMATION))
 
-#define GUPNP_DLNA_INFORMATION_GET_CLASS(obj)                           \
-        (G_TYPE_INSTANCE_GET_CLASS ((obj),                              \
-                                    GUPNP_TYPE_DLNA_INFORMATION,        \
+#define GUPNP_DLNA_INFORMATION_GET_CLASS(obj) \
+        (G_TYPE_INSTANCE_GET_CLASS ((obj), \
+                                    GUPNP_TYPE_DLNA_INFORMATION, \
                                     GUPnPDLNAInformationClass))
+
+typedef struct _GUPnPDLNAInformationPrivate GUPnPDLNAInformationPrivate;
 
 typedef struct {
         GObject parent;
+
+        GUPnPDLNAInformationPrivate *priv;
 } GUPnPDLNAInformation;
 
+/**
+ * GUPnPDLNAInformationClass:
+ * @parent_class: Parent class.
+ * @get_audio_information: This is called by #GUPnPDLNAProfileGuesser
+ * to get an audio information.
+ * @get_container_information: This is called by
+ * #GUPnPDLNAProfileGuesser to get a container information.
+ * @get_image_information: This is called by #GUPnPDLNAProfileGuesser
+ * to get an image information.
+ * @get_video_information: This is called by #GUPnPDLNAProfileGuesser
+ * to get a video information.
+ * @_reserved: Padding. Ignore it.
+ */
 typedef struct {
         GObjectClass parent_class;
+
+        GUPnPDLNAAudioInformation *
+        (* get_audio_information) (GUPnPDLNAInformation *info);
+
+        GUPnPDLNAContainerInformation *
+        (* get_container_information) (GUPnPDLNAInformation *info);
+
+        GUPnPDLNAImageInformation *
+        (* get_image_information) (GUPnPDLNAInformation *info);
+
+        GUPnPDLNAVideoInformation *
+        (* get_video_information) (GUPnPDLNAInformation *info);
+
+        gpointer _reserved[12];
 } GUPnPDLNAInformationClass;
 
-GType gupnp_dlna_information_get_type (void);
+GType
+gupnp_dlna_information_get_type (void);
 
-GUPnPDLNAInformation*
-gupnp_dlna_information_new (gchar             *name,
-                            gchar             *mime,
-                            GstDiscovererInfo *info);
+GUPnPDLNAAudioInformation*
+gupnp_dlna_information_get_audio_information (GUPnPDLNAInformation *info);
 
-const gchar * gupnp_dlna_information_get_name (GUPnPDLNAInformation *self);
-const gchar * gupnp_dlna_information_get_mime (GUPnPDLNAInformation *self);
-const GstDiscovererInfo *
-gupnp_dlna_information_get_info (GUPnPDLNAInformation *self);
+GUPnPDLNAContainerInformation*
+gupnp_dlna_information_get_container_information (GUPnPDLNAInformation *info);
 
-G_GNUC_INTERNAL GUPnPDLNAInformation *
-gupnp_dlna_information_new_from_discoverer_info (GstDiscovererInfo *info,
-                                                 GList             *profiles);
+GUPnPDLNAImageInformation*
+gupnp_dlna_information_get_image_information (GUPnPDLNAInformation *info);
 
+GUPnPDLNAVideoInformation*
+gupnp_dlna_information_get_video_information (GUPnPDLNAInformation *info);
+
+const gchar *
+gupnp_dlna_information_get_uri (GUPnPDLNAInformation *info);
 
 G_END_DECLS
 

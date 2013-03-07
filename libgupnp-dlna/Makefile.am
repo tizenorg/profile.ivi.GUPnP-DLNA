@@ -7,80 +7,245 @@
 # increment age.
 # If any interfaces have been removed since the last public release, then set
 # age to 0.
+AUTOMAKE_OPTIONS=subdir-objects
+
 LTVERSION = $(GUPNP_DLNA_VERSION_INFO)
 
-shareddir = $(datadir)/gupnp-dlna
+include $(top_srcdir)/common.am
 
-AM_CFLAGS = -I$(top_srcdir) \
-	    $(LIBXML_CFLAGS) \
-	    $(GST_CFLAGS) \
-	    $(GST_PBU_CFLAGS) \
-	    -DDATA_DIR='"$(shareddir)"' \
-	    -DG_LOG_DOMAIN='"gupnp-dlna"'
+libgupnp_dlna_incdir = \
+	$(includedir)/gupnp-dlna-2.0/libgupnp-dlna
+libgupnp_dlna_inc_HEADERS =
+noinst_LTLIBRARIES =
+pkglib_LTLIBRARIES =
+lib_LTLIBRARIES =
+dist_noinst_HEADERS =
 
-lib_LTLIBRARIES = libgupnp-dlna-1.0.la
+lib_LTLIBRARIES += libgupnp-dlna-2.0.la
 
-gupnp-dlna-marshal.c: gupnp-dlna-marshal.list
-	$(AM_V_GEN) \
-	$(GLIB_GENMARSHAL) --prefix=gupnp_dlna_marshal $(srcdir)/gupnp-dlna-marshal.list --header --body > gupnp-dlna-marshal.c
+general_log_cflags = \
+	-DG_LOG_DOMAIN='"gupnp-dlna"'
 
-gupnp-dlna-marshal.h: gupnp-dlna-marshal.list
-	$(AM_V_GEN) \
-	$(GLIB_GENMARSHAL) --prefix=gupnp_dlna_marshal $(srcdir)/gupnp-dlna-marshal.list --header > gupnp-dlna-marshal.h
+loader_log_cflags = \
+	-DG_LOG_DOMAIN='"gupnp-dlna-loader"'
 
-BUILT_SOURCES = gupnp-dlna-marshal.c gupnp-dlna-marshal.h
+guesser_log_cflags = \
+	-DG_LOG_DOMAIN='"gupnp-dlna-guesser"'
 
-libgupnp_dlna_incdir = $(includedir)/gupnp-dlna-1.0/libgupnp-dlna
+metadata_log_cflags = \
+	-DG_LOG_DOMAIN='"gupnp-dlna-metadata"'
 
-libgupnp_dlna_1_0_la_LDFLAGS = -version-info $(LTVERSION) -no-undefined
+common_cflags = \
+	$(GLIB_CFLAGS) \
+	$(GOBJECT_CFLAGS) \
+	-I$(top_srcdir)
 
-libgupnp_dlna_inc_HEADERS = gupnp-dlna-profile.h \
-			    gupnp-dlna-information.h \
-			    gupnp-dlna-discoverer.h
+metadata_cflags = \
+	-I$(top_srcdir)/libgupnp-dlna/metadata
 
-noinst_HEADERS = profile-loading.h \
-                 gupnp-dlna-profile-private.h
+common_libadd = \
+	$(GLIB_LIBS) \
+	$(GOBJECT_LIBS)
 
-introspection_sources = $(libgupnp_dlna_inc_HEADERS) \
-			gupnp-dlna-information.c \
-			gupnp-dlna-discoverer.c \
-			gupnp-dlna-profile.c \
-			gupnp-dlna-profiles.c \
-			profile-loading.c
+gupnp_ldflags = \
+	-version-info $(LTVERSION) \
+	-no-undefined
 
-libgupnp_dlna_1_0_la_SOURCES = $(introspection_sources) \
-			       $(BUILT_SOURCES)
+gupnp_cflags = \
+	$(common_cflags)
 
-libgupnp_dlna_1_0_la_LIBADD = $(LIBXML_LIBS) \
-			      $(GST_PBU_LIBS)
+gupnp_libadd = \
+	$(common_libadd)
 
+include $(top_srcdir)/libgupnp-dlna/metadata/metadata.am
+
+metadatadir=$(METADATA_DIRECTORY)
+metadata_LTLIBRARIES =
+
+if GSTREAMER_METADATA_BACKEND_ENABLED
+include $(top_srcdir)/libgupnp-dlna/metadata-backends/gstreamer/gstreamer.am
+endif
+
+if GSTREAMER_LEGACY_METADATA_BACKEND_ENABLED
+include $(top_srcdir)/libgupnp-dlna/metadata-backends/gstreamer-legacy/gstreamer.am
+endif
+
+noinst_LTLIBRARIES += \
+	libloader.la \
+	libguesser.la \
+	libmetadata.la
+
+libloader_la_SOURCES = \
+	gupnp-dlna-profile-loader.c
+libloader_la_LIBADD = \
+	$(common_libadd) \
+	$(LIBXML_LIBS)
+libloader_la_CFLAGS = \
+	$(loader_log_cflags) \
+	$(metadata_cflags) \
+	$(common_cflags) \
+	$(LIBXML_CFLAGS) \
+	-DDATA_DIR='"$(shareddir)"'
+
+libguesser_la_SOURCES = \
+	gupnp-dlna-profile-guesser.c \
+	gupnp-dlna-profile-guesser-impl.c
+libguesser_la_LIBADD = \
+	$(common_libadd)
+libguesser_la_CFLAGS = \
+	$(guesser_log_cflags) \
+	$(metadata_cflags) \
+	$(common_cflags)
+
+libmetadata_la_SOURCES = \
+	gupnp-dlna-metadata-backend.c \
+	$(metadata_metadata_sources)
+libmetadata_la_LIBADD = \
+	$(common_libadd) \
+	$(GMODULE_LIBS)
+libmetadata_la_CFLAGS = \
+	$(metadata_log_cflags) \
+	$(metadata_cflags) \
+	$(GUPNP_DLNA_METADATA_BACKEND_CFLAGS) \
+	$(common_cflags) \
+	$(GMODULE_CFLAGS)
+
+libgupnp_dlna_2_0_la_LDFLAGS = \
+	$(gupnp_ldflags)
+libgupnp_dlna_2_0_la_SOURCES = \
+	gupnp-dlna-audio-information.c \
+	gupnp-dlna-container-information.c \
+	gupnp-dlna-image-information.c \
+	gupnp-dlna-information.c \
+	gupnp-dlna-video-information.c \
+	gupnp-dlna-field-value.c \
+	gupnp-dlna-profile.c \
+	gupnp-dlna-restriction.c \
+	gupnp-dlna-value-list.c \
+	gupnp-dlna-g-values.c \
+	gupnp-dlna-utils.c \
+	gupnp-dlna-value-type.c \
+	gupnp-dlna-info-value.c \
+	gupnp-dlna-value.c \
+	gupnp-dlna-info-set.c
+libgupnp_dlna_2_0_la_LIBADD = \
+	$(gupnp_libadd) \
+	libloader.la \
+	libguesser.la \
+	libmetadata.la
+libgupnp_dlna_2_0_la_CFLAGS = \
+	$(general_log_cflags) \
+	$(metadata_cflags) \
+	$(gupnp_cflags)
+
+libgupnp_dlna_inc_HEADERS += \
+	gupnp-dlna-profile-guesser.h \
+	gupnp-dlna-profile.h \
+	gupnp-dlna-restriction.h \
+	gupnp-dlna-value-list.h \
+	gupnp-dlna-g-values.h \
+	gupnp-dlna-audio-information.h \
+	gupnp-dlna-container-information.h \
+	gupnp-dlna-image-information.h \
+	gupnp-dlna-video-information.h \
+	gupnp-dlna-information.h \
+	gupnp-dlna-values.h \
+	gupnp-dlna.h
+
+libgupnp_dlna_metadata_incdir = \
+	$(libgupnp_dlna_incdir)/metadata
+libgupnp_dlna_metadata_inc_HEADERS = \
+	metadata/gupnp-dlna-metadata-extractor.h
+
+dist_noinst_HEADERS += \
+	gupnp-dlna-field-value.h \
+	gupnp-dlna-metadata-backend.h \
+	gupnp-dlna-profile-loader.h \
+	gupnp-dlna-profile-guesser-impl.h \
+	gupnp-dlna-restriction-private.h \
+	gupnp-dlna-value-list-private.h \
+	gupnp-dlna-g-values-private.h \
+	gupnp-dlna-utils.h \
+	gupnp-dlna-value-union.h \
+	gupnp-dlna-value-type.h \
+	gupnp-dlna-info-value.h \
+	gupnp-dlna-value.h \
+	gupnp-dlna-info-set.h \
+	gupnp-dlna-profile-private.h
+
+
+# INTROSPECTION
 -include $(INTROSPECTION_MAKEFILE)
 INTROSPECTION_GIRS =
-INTROSPECTION_SCANNER_ARGS = --warn-all				\
-			     --symbol-prefix=gupnp_dlna		\
-			     --identifier-prefix=GUPnPDLNA	\
-			     --add-include-path=$(top_srcdir) \
-			     --add-init-section="gst_init(NULL, NULL);"
-INTROSPECTION_COMPILER_ARGS = --includedir=$(top_srcdir)
+INTROSPECTION_SCANNER_ARGS = \
+	--warn-all
+INTROSPECTION_COMPILER_ARGS = \
+	--includedir=$(top_srcdir)
 
 if HAVE_INTROSPECTION
-GUPnPDLNA-1.0.gir: libgupnp-dlna-1.0.la
-GUPnPDLNA_1_0_gir_INCLUDES = libxml2-2.0 GObject-2.0 GstPbutils-0.10
-GUPnPDLNA_1_0_gir_CFLAGS =  $(INCLUDES) $(AM_CFLAGS)
-GUPnPDLNA_1_0_gir_LIBS = libgupnp-dlna-1.0.la gstreamer-0.10
-GUPnPDLNA_1_0_gir_FILES = $(introspection_sources)
-GUPnPDLNA_1_0_gir_NAMESPACE = GUPnPDLNA
-GUPnPDLNA_1_0_gir_VERSION = 1.0
 
-INTROSPECTION_GIRS += GUPnPDLNA-1.0.gir
+girs = GUPnPDLNA-2.0.gir
+
+introspection_sources = \
+	gupnp-dlna-profile-guesser.h \
+	gupnp-dlna-profile.h \
+	gupnp-dlna-restriction.h \
+	gupnp-dlna-value-list.h \
+	gupnp-dlna-g-values.h \
+	gupnp-dlna-audio-information.h \
+	gupnp-dlna-container-information.h \
+	gupnp-dlna-image-information.h \
+	gupnp-dlna-video-information.h \
+	gupnp-dlna-information.h \
+	gupnp-dlna-values.h \
+	gupnp-dlna-profile-guesser.c \
+	gupnp-dlna-profile.c \
+	gupnp-dlna-restriction.c \
+	gupnp-dlna-value-list.c \
+	gupnp-dlna-g-values.c \
+	gupnp-dlna-audio-information.c \
+	gupnp-dlna-container-information.c \
+	gupnp-dlna-image-information.c \
+	gupnp-dlna-video-information.c \
+	gupnp-dlna-information.c
+
+GUPnPDLNA-2.0.gir: libgupnp-dlna-2.0.la
+GUPnPDLNA_2_0_gir_FILES = $(introspection_sources)
+GUPnPDLNA_2_0_gir_LIBS = libgupnp-dlna-2.0.la
+GUPnPDLNA_2_0_gir_INCLUDES = GObject-2.0
+GUPnPDLNA_2_0_gir_SCANNERFLAGS = \
+	--symbol-prefix=gupnp_dlna \
+	--identifier-prefix=GUPnPDLNA
+GUPnPDLNA_2_0_gir_CFLAGS = \
+	-I$(top_srcdir)
+
+if GSTREAMER_METADATA_BACKEND_ENABLED
+girs += GUPnPDLNAGst-2.0.gir
+
+gst_introspection_sources = \
+	metadata-backends/gstreamer/gupnp-dlna-gst-utils.h \
+	metadata-backends/gstreamer/gupnp-dlna-gst-utils.c
+
+GUPnPDLNAGst-2.0.gir: $(gstreamer_utils_lib) GUPnPDLNA-2.0.gir
+GUPnPDLNAGst_2_0_gir_FILES = $(gst_introspection_sources)
+GUPnPDLNAGst_2_0_gir_LIBS = $(gstreamer_utils_lib)
+GUPnPDLNAGst_2_0_gir_INCLUDES = GObject-2.0 GUPnPDLNA-2.0 Gst-1.0 GstPbutils-1.0
+GUPnPDLNAGst_2_0_gir_SCANNERFLAGS = \
+	--symbol-prefix=gupnp_dlna_gst \
+	--identifier-prefix=GUPnPDLNAGst \
+	--add-include-path=.
+GUPnPDLNAGst_2_0_gir_CFLAGS = \
+	-I$(top_srcdir)
+endif
+
+INTROSPECTION_GIRS += $(girs)
 
 girdir = $(datadir)/gir-1.0
-gir_DATA = GUPnPDLNA-1.0.gir
+gir_DATA = $(girs)
 
 typelibdir = $(libdir)/girepository-1.0/
 typelib_DATA = $(gir_DATA:.gir=.typelib)
+
+CLEANFILES = $(gir_DATA) $(typelib_DATA)
+
 endif
-
-EXTRA_DIST = gupnp-dlna-marshal.list
-
-CLEANFILES = $(BUILT_SOURCES) $(gir_DATA) $(typelib_DATA)

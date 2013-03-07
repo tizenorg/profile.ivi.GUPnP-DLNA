@@ -1,0 +1,438 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GUPnPDLNAVideoInformation</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<link rel="home" href="index.html" title="GUPnP DLNA Reference Manual">
+<link rel="up" href="ch01.html" title="GUPnP DLNA">
+<link rel="prev" href="GUPnPDLNAImageInformation.html" title="GUPnPDLNAImageInformation">
+<link rel="next" href="gupnp-dlna-gupnp-dlna-restriction.html" title="gupnp-dlna-restriction">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="GUPnPDLNAImageInformation.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GUPnP DLNA Reference Manual</th>
+<td><a accesskey="n" href="gupnp-dlna-gupnp-dlna-restriction.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#GUPnPDLNAVideoInformation.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#GUPnPDLNAVideoInformation.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#GUPnPDLNAVideoInformation.object-hierarchy" class="shortcut">Object Hierarchy</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="GUPnPDLNAVideoInformation"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GUPnPDLNAVideoInformation.top_of_page"></a>GUPnPDLNAVideoInformation</span></h2>
+<p>GUPnPDLNAVideoInformation — Base class representing video metadata needed
+for DLNA profiles matching.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="GUPnPDLNAVideoInformation.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">                    <a class="link" href="GUPnPDLNAVideoInformation.html#GUPnPDLNAVideoInformation-struct" title="GUPnPDLNAVideoInformation">GUPnPDLNAVideoInformation</a>;
+                    <a class="link" href="GUPnPDLNAVideoInformation.html#GUPnPDLNAVideoInformationClass" title="GUPnPDLNAVideoInformationClass">GUPnPDLNAVideoInformationClass</a>;
+<a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAIntValue" title="GUPnPDLNAIntValue"><span class="returnvalue">GUPnPDLNAIntValue</span></a>   <a class="link" href="GUPnPDLNAVideoInformation.html#gupnp-dlna-video-information-get-bitrate" title="gupnp_dlna_video_information_get_bitrate ()">gupnp_dlna_video_information_get_bitrate</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> *info</code></em>);
+<a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAFractionValue" title="GUPnPDLNAFractionValue"><span class="returnvalue">GUPnPDLNAFractionValue</span></a> <a class="link" href="GUPnPDLNAVideoInformation.html#gupnp-dlna-video-information-get-framerate" title="gupnp_dlna_video_information_get_framerate ()">gupnp_dlna_video_information_get_framerate</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> *info</code></em>);
+<a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAIntValue" title="GUPnPDLNAIntValue"><span class="returnvalue">GUPnPDLNAIntValue</span></a>   <a class="link" href="GUPnPDLNAVideoInformation.html#gupnp-dlna-video-information-get-height" title="gupnp_dlna_video_information_get_height ()">gupnp_dlna_video_information_get_height</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> *info</code></em>);
+<a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAStringValue" title="GUPnPDLNAStringValue"><span class="returnvalue">GUPnPDLNAStringValue</span></a> <a class="link" href="GUPnPDLNAVideoInformation.html#gupnp-dlna-video-information-get-level" title="gupnp_dlna_video_information_get_level ()">gupnp_dlna_video_information_get_level</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> *info</code></em>);
+<a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAStringValue" title="GUPnPDLNAStringValue"><span class="returnvalue">GUPnPDLNAStringValue</span></a> <a class="link" href="GUPnPDLNAVideoInformation.html#gupnp-dlna-video-information-get-mime" title="gupnp_dlna_video_information_get_mime ()">gupnp_dlna_video_information_get_mime</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> *info</code></em>);
+<a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAIntValue" title="GUPnPDLNAIntValue"><span class="returnvalue">GUPnPDLNAIntValue</span></a>   <a class="link" href="GUPnPDLNAVideoInformation.html#gupnp-dlna-video-information-get-mpeg-version" title="gupnp_dlna_video_information_get_mpeg_version ()">gupnp_dlna_video_information_get_mpeg_version</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> *info</code></em>);
+<a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAFractionValue" title="GUPnPDLNAFractionValue"><span class="returnvalue">GUPnPDLNAFractionValue</span></a> <a class="link" href="GUPnPDLNAVideoInformation.html#gupnp-dlna-video-information-get-pixel-aspect-ratio" title="gupnp_dlna_video_information_get_pixel_aspect_ratio ()">gupnp_dlna_video_information_get_pixel_aspect_ratio</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> *info</code></em>);
+<a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAStringValue" title="GUPnPDLNAStringValue"><span class="returnvalue">GUPnPDLNAStringValue</span></a> <a class="link" href="GUPnPDLNAVideoInformation.html#gupnp-dlna-video-information-get-profile" title="gupnp_dlna_video_information_get_profile ()">gupnp_dlna_video_information_get_profile</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> *info</code></em>);
+<a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAIntValue" title="GUPnPDLNAIntValue"><span class="returnvalue">GUPnPDLNAIntValue</span></a>   <a class="link" href="GUPnPDLNAVideoInformation.html#gupnp-dlna-video-information-get-width" title="gupnp_dlna_video_information_get_width ()">gupnp_dlna_video_information_get_width</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> *info</code></em>);
+<a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNABoolValue" title="GUPnPDLNABoolValue"><span class="returnvalue">GUPnPDLNABoolValue</span></a>  <a class="link" href="GUPnPDLNAVideoInformation.html#gupnp-dlna-video-information-is-interlaced" title="gupnp_dlna_video_information_is_interlaced ()">gupnp_dlna_video_information_is_interlaced</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> *info</code></em>);
+<a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNABoolValue" title="GUPnPDLNABoolValue"><span class="returnvalue">GUPnPDLNABoolValue</span></a>  <a class="link" href="GUPnPDLNAVideoInformation.html#gupnp-dlna-video-information-is-system-stream" title="gupnp_dlna_video_information_is_system_stream ()">gupnp_dlna_video_information_is_system_stream</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> *info</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="GUPnPDLNAVideoInformation.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+   +----GUPnPDLNAVideoInformation
+</pre>
+</div>
+<div class="refsect1">
+<a name="GUPnPDLNAVideoInformation.description"></a><h2>Description</h2>
+<p>
+<a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> holds all video metadatas important for
+matching profiles. Note that it does not mean all data should be
+provided for every video file as in some cases it does not make
+sense (e.g. MPEG version does not make sense for Quicktime video
+files).
+</p>
+<p>
+For metadata attributes that do not exist in current video file an
+unset value should be returned. For metadata attributes that do
+exist a set value with proper underlying value should be
+returned. In case metadata extractor has completely no clue how to
+extract some metadata attribute at all, an unsupported value should
+be returned. Note that unsupported values should be a temporary
+mean before fixing the multimedia framework to be able to extract
+such attribute.
+</p>
+<p>
+Note that <a class="link" href="GUPnPDLNAVideoInformation.html#gupnp-dlna-video-information-get-mime" title="gupnp_dlna_video_information_get_mime ()"><code class="function">gupnp_dlna_video_information_get_mime()</code></a> should always
+return a set value. Otherwise it is highly probably that the file
+will not match against any DLNA profile.
+</p>
+</div>
+<div class="refsect1">
+<a name="GUPnPDLNAVideoInformation.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="GUPnPDLNAVideoInformation-struct"></a><h3>GUPnPDLNAVideoInformation</h3>
+<pre class="programlisting">typedef struct _GUPnPDLNAVideoInformation GUPnPDLNAVideoInformation;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GUPnPDLNAVideoInformationClass"></a><h3>GUPnPDLNAVideoInformationClass</h3>
+<pre class="programlisting">typedef struct {
+        GObjectClass parent_class;
+
+        GUPnPDLNAIntValue
+        (* get_bitrate) (GUPnPDLNAVideoInformation *info);
+
+        GUPnPDLNAFractionValue
+        (* get_framerate) (GUPnPDLNAVideoInformation *info);
+
+        GUPnPDLNAIntValue
+        (* get_height) (GUPnPDLNAVideoInformation *info);
+
+        GUPnPDLNABoolValue
+        (* is_interlaced) (GUPnPDLNAVideoInformation *info);
+
+        GUPnPDLNAStringValue
+        (* get_level) (GUPnPDLNAVideoInformation *info);
+
+        GUPnPDLNAIntValue
+        (* get_mpeg_version) (GUPnPDLNAVideoInformation *info);
+
+        GUPnPDLNAFractionValue
+        (* get_pixel_aspect_ratio) (GUPnPDLNAVideoInformation *info);
+
+        GUPnPDLNAStringValue
+        (* get_profile) (GUPnPDLNAVideoInformation *info);
+
+        GUPnPDLNABoolValue
+        (* is_system_stream) (GUPnPDLNAVideoInformation *info);
+
+        GUPnPDLNAIntValue
+        (* get_width) (GUPnPDLNAVideoInformation *info);
+
+        GUPnPDLNAStringValue
+        (* get_mime) (GUPnPDLNAVideoInformation *info);
+
+        gpointer _reserved[12];
+} GUPnPDLNAVideoInformationClass;
+</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObjectClass"><span class="type">GObjectClass</span></a> <em class="structfield"><code><a name="GUPnPDLNAVideoInformationClass.parent-class"></a>parent_class</code></em>;</span></p></td>
+<td>Parent class.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAVideoInformationClass.get-bitrate"></a>get_bitrate</code></em> ()</span></p></td>
+<td>This is called by <a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a> to get a
+bitrate.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAVideoInformationClass.get-framerate"></a>get_framerate</code></em> ()</span></p></td>
+<td>This is called by <a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a> to get a
+framerate.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAVideoInformationClass.get-height"></a>get_height</code></em> ()</span></p></td>
+<td>This is called by <a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a> to get a
+height.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAVideoInformationClass.is-interlaced"></a>is_interlaced</code></em> ()</span></p></td>
+<td>This is called by <a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a> to get
+whether it is interlaced.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAVideoInformationClass.get-level"></a>get_level</code></em> ()</span></p></td>
+<td>This is called by <a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a> to get a
+level.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAVideoInformationClass.get-mpeg-version"></a>get_mpeg_version</code></em> ()</span></p></td>
+<td>This is called by <a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a> to
+get an MPEG version.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAVideoInformationClass.get-pixel-aspect-ratio"></a>get_pixel_aspect_ratio</code></em> ()</span></p></td>
+<td>This is called by <a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a>
+to get a pixel-aspect-ratio.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAVideoInformationClass.get-profile"></a>get_profile</code></em> ()</span></p></td>
+<td>This is called by <a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a> to get a
+profile.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAVideoInformationClass.is-system-stream"></a>is_system_stream</code></em> ()</span></p></td>
+<td>This is called by <a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a> to
+get whether it is a system stream.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAVideoInformationClass.get-width"></a>get_width</code></em> ()</span></p></td>
+<td>This is called by <a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a> to get a
+width.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAVideoInformationClass.get-mime"></a>get_mime</code></em> ()</span></p></td>
+<td>This is called by <a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a> to get a MIME
+type.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="GUPnPDLNAVideoInformationClass.-reserved"></a>_reserved</code></em>[12];</span></p></td>
+<td>Padding. Ignore it.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-video-information-get-bitrate"></a><h3>gupnp_dlna_video_information_get_bitrate ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAIntValue" title="GUPnPDLNAIntValue"><span class="returnvalue">GUPnPDLNAIntValue</span></a>   gupnp_dlna_video_information_get_bitrate
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> *info</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A bitrate.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-video-information-get-framerate"></a><h3>gupnp_dlna_video_information_get_framerate ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAFractionValue" title="GUPnPDLNAFractionValue"><span class="returnvalue">GUPnPDLNAFractionValue</span></a> gupnp_dlna_video_information_get_framerate
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> *info</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A framerate.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-video-information-get-height"></a><h3>gupnp_dlna_video_information_get_height ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAIntValue" title="GUPnPDLNAIntValue"><span class="returnvalue">GUPnPDLNAIntValue</span></a>   gupnp_dlna_video_information_get_height
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> *info</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A height.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-video-information-get-level"></a><h3>gupnp_dlna_video_information_get_level ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAStringValue" title="GUPnPDLNAStringValue"><span class="returnvalue">GUPnPDLNAStringValue</span></a> gupnp_dlna_video_information_get_level
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> *info</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A level.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-video-information-get-mime"></a><h3>gupnp_dlna_video_information_get_mime ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAStringValue" title="GUPnPDLNAStringValue"><span class="returnvalue">GUPnPDLNAStringValue</span></a> gupnp_dlna_video_information_get_mime
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> *info</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A MIME type.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-video-information-get-mpeg-version"></a><h3>gupnp_dlna_video_information_get_mpeg_version ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAIntValue" title="GUPnPDLNAIntValue"><span class="returnvalue">GUPnPDLNAIntValue</span></a>   gupnp_dlna_video_information_get_mpeg_version
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> *info</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>An MPEG version.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-video-information-get-pixel-aspect-ratio"></a><h3>gupnp_dlna_video_information_get_pixel_aspect_ratio ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAFractionValue" title="GUPnPDLNAFractionValue"><span class="returnvalue">GUPnPDLNAFractionValue</span></a> gupnp_dlna_video_information_get_pixel_aspect_ratio
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> *info</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A pixel-aspect-ratio.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-video-information-get-profile"></a><h3>gupnp_dlna_video_information_get_profile ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAStringValue" title="GUPnPDLNAStringValue"><span class="returnvalue">GUPnPDLNAStringValue</span></a> gupnp_dlna_video_information_get_profile
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> *info</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A profile.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-video-information-get-width"></a><h3>gupnp_dlna_video_information_get_width ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAIntValue" title="GUPnPDLNAIntValue"><span class="returnvalue">GUPnPDLNAIntValue</span></a>   gupnp_dlna_video_information_get_width
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> *info</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A width.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-video-information-is-interlaced"></a><h3>gupnp_dlna_video_information_is_interlaced ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNABoolValue" title="GUPnPDLNABoolValue"><span class="returnvalue">GUPnPDLNABoolValue</span></a>  gupnp_dlna_video_information_is_interlaced
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> *info</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Whether video is interlaced.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-video-information-is-system-stream"></a><h3>gupnp_dlna_video_information_is_system_stream ()</h3>
+<pre class="programlisting"><a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNABoolValue" title="GUPnPDLNABoolValue"><span class="returnvalue">GUPnPDLNABoolValue</span></a>  gupnp_dlna_video_information_is_system_stream
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> *info</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="type">GUPnPDLNAVideoInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Whether it is a system stream.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GUPnPDLNAVideoInformation.see-also"></a><h2>See Also</h2>
+<a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNABoolValue" title="GUPnPDLNABoolValue"><span class="type">GUPnPDLNABoolValue</span></a>, <a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAFractionValue" title="GUPnPDLNAFractionValue"><span class="type">GUPnPDLNAFractionValue</span></a>,
+<a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAIntValue" title="GUPnPDLNAIntValue"><span class="type">GUPnPDLNAIntValue</span></a>, <a class="link" href="gupnp-dlna-GUPnP-DLNA-Values.html#GUPnPDLNAStringValue" title="GUPnPDLNAStringValue"><span class="type">GUPnPDLNAStringValue</span></a>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.18</div>
+</body>
+</html>

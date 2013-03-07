@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GUPnPDLNAMetadataExtractor</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<link rel="home" href="index.html" title="GUPnP DLNA Reference Manual">
+<link rel="up" href="ch01.html" title="GUPnP DLNA Metadata">
+<link rel="prev" href="ch01.html" title="GUPnP DLNA Metadata">
+<link rel="next" href="annotation-glossary.html" title="Annotation Glossary">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="ch01.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GUPnP DLNA Reference Manual</th>
+<td><a accesskey="n" href="annotation-glossary.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#GUPnPDLNAMetadataExtractor.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#GUPnPDLNAMetadataExtractor.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#GUPnPDLNAMetadataExtractor.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#GUPnPDLNAMetadataExtractor.signals" class="shortcut">Signals</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="GUPnPDLNAMetadataExtractor"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GUPnPDLNAMetadataExtractor.top_of_page"></a>GUPnPDLNAMetadataExtractor</span></h2>
+<p>GUPnPDLNAMetadataExtractor — Base class for extracting metadata for given
+media.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="GUPnPDLNAMetadataExtractor.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">                    <a class="link" href="GUPnPDLNAMetadataExtractor.html#GUPnPDLNAMetadataExtractor-struct" title="GUPnPDLNAMetadataExtractor">GUPnPDLNAMetadataExtractor</a>;
+                    <a class="link" href="GUPnPDLNAMetadataExtractor.html#GUPnPDLNAMetadataExtractorClass" title="GUPnPDLNAMetadataExtractorClass">GUPnPDLNAMetadataExtractorClass</a>;
+<span class="returnvalue">void</span>                <a class="link" href="GUPnPDLNAMetadataExtractor.html#gupnp-dlna-metadata-extractor-emit-done" title="gupnp_dlna_metadata_extractor_emit_done ()">gupnp_dlna_metadata_extractor_emit_done</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAMetadataExtractor.html" title="GUPnPDLNAMetadataExtractor"><span class="type">GUPnPDLNAMetadataExtractor</span></a> *extractor</code></em>,
+                                                         <em class="parameter"><code><a href="../gupnp-dlna/GUPnPDLNAInformation.html"><span class="type">GUPnPDLNAInformation</span></a> *info</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> *error</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="GUPnPDLNAMetadataExtractor.html#gupnp-dlna-metadata-extractor-extract-async" title="gupnp_dlna_metadata_extractor_extract_async ()">gupnp_dlna_metadata_extractor_extract_async</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAMetadataExtractor.html" title="GUPnPDLNAMetadataExtractor"><span class="type">GUPnPDLNAMetadataExtractor</span></a> *extractor</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *uri</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> timeout_in_ms</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
+<a href="../gupnp-dlna/GUPnPDLNAInformation.html"><span class="returnvalue">GUPnPDLNAInformation</span></a> * <a class="link" href="GUPnPDLNAMetadataExtractor.html#gupnp-dlna-metadata-extractor-extract-sync" title="gupnp_dlna_metadata_extractor_extract_sync ()">gupnp_dlna_metadata_extractor_extract_sync</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAMetadataExtractor.html" title="GUPnPDLNAMetadataExtractor"><span class="type">GUPnPDLNAMetadataExtractor</span></a> *extractor</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *uri</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> timeout_in_ms</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="GUPnPDLNAMetadataExtractor.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
+   +----GUPnPDLNAMetadataExtractor
+</pre>
+</div>
+<div class="refsect1">
+<a name="GUPnPDLNAMetadataExtractor.signals"></a><h2>Signals</h2>
+<pre class="synopsis">
+  "<a class="link" href="GUPnPDLNAMetadataExtractor.html#GUPnPDLNAMetadataExtractor-done" title='The "done" signal'>done</a>"                                           : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a>
+</pre>
+</div>
+<div class="refsect1">
+<a name="GUPnPDLNAMetadataExtractor.description"></a><h2>Description</h2>
+<p>
+<a class="link" href="GUPnPDLNAMetadataExtractor.html" title="GUPnPDLNAMetadataExtractor"><span class="type">GUPnPDLNAMetadataExtractor</span></a> is used by <a href="../gupnp-dlna/GUPnPDLNAProfileGuesser.html"><span class="type">GUPnPDLNAProfileGuesser</span></a> to
+get needed metadata for profile matching. This class itself does
+not implement any metadata extraction features. For that it is
+expected to provide a plugin which:
+1. Provides a <a class="link" href="GUPnPDLNAMetadataExtractor.html" title="GUPnPDLNAMetadataExtractor"><span class="type">GUPnPDLNAMetadataExtractor</span></a> subclass implementation.
+2. Exports a <code class="function">gupnp_dlna_get_default_extractor()</code> which takes no
+parameters and returns a <a class="link" href="GUPnPDLNAMetadataExtractor.html" title="GUPnPDLNAMetadataExtractor"><span class="type">GUPnPDLNAMetadataExtractor</span></a>.
+</p>
+<p>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Dynamic-Loading-of-Modules.html#GModule"><span class="type">GModule</span></a> is used for loading the plugin, so <a href="http://library.gnome.org/devel/glib/unstable/glib-Dynamic-Loading-of-Modules.html#GModule"><span class="type">GModule</span></a>'s features can
+be used also (like exporting <code class="function">g_module_check_init()</code> to initialize
+multimedia framework used for extracting metadata).
+</p>
+<p>
+Default plugin directory and default plugin file is set during
+configuration stage, but it can be overriden during runtime by
+setting respectively <code class="literal">GUPNP_DLNA_METADATA_BACKEND</code> and
+<code class="literal">GUPNP_DLNA_METADATA_BACKEND_DIR</code> environment variables before the
+plugin is loaded (i.e. before <a href="../gupnp-dlna/GUPnPDLNAProfileGuesser.html"><span class="type">GUPnPDLNAProfileGuesser</span></a> is used for
+guessing profile).
+</p>
+<p>
+The <code class="literal">GUPNP_DLNA_METADATA_BACKEND</code> environment variable should hold a
+name like "gstreamer", so libgstreamer.so will be loaded. For
+determining a plugin filename <a href="http://library.gnome.org/devel/glib/unstable/glib-Dynamic-Loading-of-Modules.html#g-module-build-path"><code class="function">g_module_build_path()</code></a> is used.
+</p>
+<p>
+If subclassing <a class="link" href="GUPnPDLNAMetadataExtractor.html" title="GUPnPDLNAMetadataExtractor"><span class="type">GUPnPDLNAMetadataExtractor</span></a> then also
+<a href="../gupnp-dlna/GUPnPDLNAInformation.html"><span class="type">GUPnPDLNAInformation</span></a>, <a href="../gupnp-dlna/GUPnPDLNAAudioInformation.html"><span class="type">GUPnPDLNAAudioInformation</span></a>,
+<a href="../gupnp-dlna/GUPnPDLNAContainerInformation.html"><span class="type">GUPnPDLNAContainerInformation</span></a>, <a href="../gupnp-dlna/GUPnPDLNAImageInformation.html"><span class="type">GUPnPDLNAImageInformation</span></a> and
+<a href="../gupnp-dlna/GUPnPDLNAVideoInformation.html"><span class="type">GUPnPDLNAVideoInformation</span></a> have to be subclassed as well.
+</p>
+</div>
+<div class="refsect1">
+<a name="GUPnPDLNAMetadataExtractor.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="GUPnPDLNAMetadataExtractor-struct"></a><h3>GUPnPDLNAMetadataExtractor</h3>
+<pre class="programlisting">typedef struct _GUPnPDLNAMetadataExtractor GUPnPDLNAMetadataExtractor;</pre>
+<p>
+The top-level object used to for metadata extraction.
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GUPnPDLNAMetadataExtractorClass"></a><h3>GUPnPDLNAMetadataExtractorClass</h3>
+<pre class="programlisting">typedef struct {
+        GObjectClass parent_class;
+
+        /* virtuals */
+        gboolean
+        (* extract_async) (GUPnPDLNAMetadataExtractor  *extractor,
+                           const gchar                 *uri,
+                           guint                        timeout_in_ms,
+                           GError                     **error);
+
+        GUPnPDLNAInformation *
+        (* extract_sync) (GUPnPDLNAMetadataExtractor  *extractor,
+                          const gchar                 *uri,
+                          guint                        timeout_in_ms,
+                          GError                     **error);
+
+        gpointer _reserved[12];
+} GUPnPDLNAMetadataExtractorClass;
+</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObjectClass"><span class="type">GObjectClass</span></a> <em class="structfield"><code><a name="GUPnPDLNAMetadataExtractorClass.parent-class"></a>parent_class</code></em>;</span></p></td>
+<td>Parent class.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAMetadataExtractorClass.extract-async"></a>extract_async</code></em> ()</span></p></td>
+<td>This is called by <a href="../gupnp-dlna/GUPnPDLNAProfileGuesser.html"><span class="type">GUPnPDLNAProfileGuesser</span></a> to get a
+information about media file asynchronously.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAMetadataExtractorClass.extract-sync"></a>extract_sync</code></em> ()</span></p></td>
+<td>This is called by <a href="../gupnp-dlna/GUPnPDLNAProfileGuesser.html"><span class="type">GUPnPDLNAProfileGuesser</span></a> to get a
+information about media file synchronously.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="GUPnPDLNAMetadataExtractorClass.-reserved"></a>_reserved</code></em>[12];</span></p></td>
+<td>Padding. Ignore it.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-metadata-extractor-emit-done"></a><h3>gupnp_dlna_metadata_extractor_emit_done ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gupnp_dlna_metadata_extractor_emit_done
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAMetadataExtractor.html" title="GUPnPDLNAMetadataExtractor"><span class="type">GUPnPDLNAMetadataExtractor</span></a> *extractor</code></em>,
+                                                         <em class="parameter"><code><a href="../gupnp-dlna/GUPnPDLNAInformation.html"><span class="type">GUPnPDLNAInformation</span></a> *info</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> *error</code></em>);</pre>
+<p>
+Emits ::done signal. This function is intended to be used by
+subclasses of <a class="link" href="GUPnPDLNAMetadataExtractor.html" title="GUPnPDLNAMetadataExtractor"><span class="type">GUPnPDLNAMetadataExtractor</span></a>. It is required to always
+pass a meaningful <em class="parameter"><code>info</code></em>, even in case of error. That way a receiver
+of this signal can know which URI discovery failed by using
+<a href="../gupnp-dlna/GUPnPDLNAInformation.html#gupnp-dlna-information-get-uri"><code class="function">gupnp_dlna_information_get_uri()</code></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>extractor</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAMetadataExtractor.html" title="GUPnPDLNAMetadataExtractor"><span class="type">GUPnPDLNAMetadataExtractor</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a href="../gupnp-dlna/GUPnPDLNAInformation.html"><span class="type">GUPnPDLNAInformation</span></a> about discovered URI. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>A <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a>. <span class="annotation">[<acronym title="NULL is ok, both for passing and for returning."><span class="acronym">allow-none</span></acronym>][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-metadata-extractor-extract-async"></a><h3>gupnp_dlna_metadata_extractor_extract_async ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            gupnp_dlna_metadata_extractor_extract_async
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAMetadataExtractor.html" title="GUPnPDLNAMetadataExtractor"><span class="type">GUPnPDLNAMetadataExtractor</span></a> *extractor</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *uri</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> timeout_in_ms</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>
+Queues <em class="parameter"><code>uri</code></em> for metadata discovery. When discovery is completed,
+the ::done signal is emitted on <em class="parameter"><code>extractor</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>extractor</code></em> :</span></p></td>
+<td>
+<a class="link" href="GUPnPDLNAMetadataExtractor.html" title="GUPnPDLNAMetadataExtractor"><span class="type">GUPnPDLNAMetadataExtractor</span></a> object to use for discovery</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>uri</code></em> :</span></p></td>
+<td>URI to gather metadata for</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_in_ms</code></em> :</span></p></td>
+<td>Timeout in miliseconds.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>A <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if <em class="parameter"><code>uri</code></em> was successfully queued, <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-metadata-extractor-extract-sync"></a><h3>gupnp_dlna_metadata_extractor_extract_sync ()</h3>
+<pre class="programlisting"><a href="../gupnp-dlna/GUPnPDLNAInformation.html"><span class="returnvalue">GUPnPDLNAInformation</span></a> * gupnp_dlna_metadata_extractor_extract_sync
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAMetadataExtractor.html" title="GUPnPDLNAMetadataExtractor"><span class="type">GUPnPDLNAMetadataExtractor</span></a> *extractor</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *uri</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> timeout_in_ms</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>
+Discovers synchronously metadata of given <em class="parameter"><code>uri</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>extractor</code></em> :</span></p></td>
+<td>
+<a class="link" href="GUPnPDLNAMetadataExtractor.html" title="GUPnPDLNAMetadataExtractor"><span class="type">GUPnPDLNAMetadataExtractor</span></a> object to use for discovery</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>uri</code></em> :</span></p></td>
+<td>URI to gather metadata for</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_in_ms</code></em> :</span></p></td>
+<td>Timeout in miliseconds.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>A <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A <a href="../gupnp-dlna/GUPnPDLNAInformation.html"><span class="type">GUPnPDLNAInformation</span></a> object if discovery succeeded,
+otherwise <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GUPnPDLNAMetadataExtractor.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2">
+<a name="GUPnPDLNAMetadataExtractor-done"></a><h3>The <code class="literal">"done"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="GUPnPDLNAMetadataExtractor.html" title="GUPnPDLNAMetadataExtractor"><span class="type">GUPnPDLNAMetadataExtractor</span></a> *extractor,
+                                                        <a href="../gupnp-dlna/GUPnPDLNAInformation.html"><span class="type">GUPnPDLNAInformation</span></a>       *info,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a>                     *error,
+                                                        <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>                    user_data)      : <a href="http://library.gnome.org/devel/gobject/unstable/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS"><code class="literal">Run Last</code></a></pre>
+<p>
+Will be emitted when all information on a URI could be
+discovered.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>extractor</code></em> :</span></p></td>
+<td>The <a class="link" href="GUPnPDLNAMetadataExtractor.html" title="GUPnPDLNAMetadataExtractor"><span class="type">GUPnPDLNAMetadataExtractor</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>The results as <a href="../gupnp-dlna/GUPnPDLNAInformation.html"><span class="type">GUPnPDLNAInformation</span></a>. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Contains details of
+the error if discovery fails, otherwise is <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. <span class="annotation">[<acronym title="NULL is ok, both for passing and for returning."><span class="acronym">allow-none</span></acronym>][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.18</div>
+</body>
+</html>
