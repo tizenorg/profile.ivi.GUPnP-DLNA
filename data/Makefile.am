@@ -11,11 +11,18 @@ dlnaprofiles = mp3.xml \
 	       mpeg1.xml \
 	       avc.xml \
 	       mpeg-ts.xml \
+	       mpeg-ps.xml \
+	       mpeg-common.xml \
 	       mpeg4.xml \
 	       jpeg.xml \
 	       png.xml
 
 dlnadir = $(shareddir)/dlna-profiles
 dlna_DATA = $(dlnaschemas) $(dlnaprofiles)
+
+if HAVE_XMLLINT
+check-profiles: $(dlnaprofiles) $(dlnaschemas)
+	$(XMLLINT) --relaxng $(dlnaschemas) $(dlnaprofiles) >/dev/null
+endif
 
 EXTRA_DIST = $(dlnaschemas) $(dlnaprofiles)

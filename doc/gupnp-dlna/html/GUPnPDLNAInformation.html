@@ -50,6 +50,8 @@ metadata informations.</p>
                                                         (<em class="parameter"><code><a class="link" href="GUPnPDLNAInformation.html" title="GUPnPDLNAInformation"><span class="type">GUPnPDLNAInformation</span></a> *info</code></em>);
 <a class="link" href="GUPnPDLNAImageInformation.html" title="GUPnPDLNAImageInformation"><span class="returnvalue">GUPnPDLNAImageInformation</span></a> * <a class="link" href="GUPnPDLNAInformation.html#gupnp-dlna-information-get-image-information" title="gupnp_dlna_information_get_image_information ()">gupnp_dlna_information_get_image_information</a>
                                                         (<em class="parameter"><code><a class="link" href="GUPnPDLNAInformation.html" title="GUPnPDLNAInformation"><span class="type">GUPnPDLNAInformation</span></a> *info</code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="GUPnPDLNAInformation.html#gupnp-dlna-information-get-profile-name" title="gupnp_dlna_information_get_profile_name ()">gupnp_dlna_information_get_profile_name</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAInformation.html" title="GUPnPDLNAInformation"><span class="type">GUPnPDLNAInformation</span></a> *info</code></em>);
 const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="GUPnPDLNAInformation.html#gupnp-dlna-information-get-uri" title="gupnp_dlna_information_get_uri ()">gupnp_dlna_information_get_uri</a>      (<em class="parameter"><code><a class="link" href="GUPnPDLNAInformation.html" title="GUPnPDLNAInformation"><span class="type">GUPnPDLNAInformation</span></a> *info</code></em>);
 <a class="link" href="GUPnPDLNAVideoInformation.html" title="GUPnPDLNAVideoInformation"><span class="returnvalue">GUPnPDLNAVideoInformation</span></a> * <a class="link" href="GUPnPDLNAInformation.html#gupnp-dlna-information-get-video-information" title="gupnp_dlna_information_get_video_information ()">gupnp_dlna_information_get_video_information</a>
                                                         (<em class="parameter"><code><a class="link" href="GUPnPDLNAInformation.html" title="GUPnPDLNAInformation"><span class="type">GUPnPDLNAInformation</span></a> *info</code></em>);
@@ -108,7 +110,10 @@ that "uri" with a URI to media file is passed to <a href="http://library.gnome.o
         GUPnPDLNAVideoInformation *
         (* get_video_information) (GUPnPDLNAInformation *info);
 
-        gpointer _reserved[12];
+        const gchar *
+        (* get_profile_name) (GUPnPDLNAInformation *info);
+
+        gpointer _reserved[11];
 } GUPnPDLNAInformationClass;
 </pre>
 <div class="variablelist"><table border="0">
@@ -139,7 +144,12 @@ to get an image information.</td>
 to get a video information.</td>
 </tr>
 <tr>
-<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="GUPnPDLNAInformationClass.-reserved"></a>_reserved</code></em>[12];</span></p></td>
+<td><p><span class="term"><em class="structfield"><code><a name="GUPnPDLNAInformationClass.get-profile-name"></a>get_profile_name</code></em> ()</span></p></td>
+<td>This is called by <a class="link" href="GUPnPDLNAProfileGuesser.html" title="GUPnPDLNAProfileGuesser"><span class="type">GUPnPDLNAProfileGuesser</span></a> to
+get the name of the DLNA profile assigned with this information.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="GUPnPDLNAInformationClass.-reserved"></a>_reserved</code></em>[11];</span></p></td>
 <td>Padding. Ignore it.</td>
 </tr>
 </tbody>
@@ -212,6 +222,26 @@ image files).
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>A <a class="link" href="GUPnPDLNAImageInformation.html" title="GUPnPDLNAImageInformation"><span class="type">GUPnPDLNAImageInformation</span></a> object or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-dlna-information-get-profile-name"></a><h3>gupnp_dlna_information_get_profile_name ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       gupnp_dlna_information_get_profile_name
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDLNAInformation.html" title="GUPnPDLNAInformation"><span class="type">GUPnPDLNAInformation</span></a> *info</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>info</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDLNAInformation.html" title="GUPnPDLNAInformation"><span class="type">GUPnPDLNAInformation</span></a> object.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The name of a DLNA profile or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
 </td>
 </tr>
 </tbody>

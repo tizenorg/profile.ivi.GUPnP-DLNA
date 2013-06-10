@@ -80,27 +80,32 @@ media.</p>
 get needed metadata for profile matching. This class itself does
 not implement any metadata extraction features. For that it is
 expected to provide a plugin which:
-1. Provides a <a class="link" href="GUPnPDLNAMetadataExtractor.html" title="GUPnPDLNAMetadataExtractor"><span class="type">GUPnPDLNAMetadataExtractor</span></a> subclass implementation.
-2. Exports a <code class="function">gupnp_dlna_get_default_extractor()</code> which takes no
-parameters and returns a <a class="link" href="GUPnPDLNAMetadataExtractor.html" title="GUPnPDLNAMetadataExtractor"><span class="type">GUPnPDLNAMetadataExtractor</span></a>.
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem"><p>Provides a <a class="link" href="GUPnPDLNAMetadataExtractor.html" title="GUPnPDLNAMetadataExtractor"><span class="type">GUPnPDLNAMetadataExtractor</span></a> subclass implementation.</p></li>
+<li class="listitem"><p>Exports a <code class="function">gupnp_dlna_get_default_extractor</code>() which
+takes no parameters and returns a <a class="link" href="GUPnPDLNAMetadataExtractor.html" title="GUPnPDLNAMetadataExtractor"><span class="type">GUPnPDLNAMetadataExtractor</span></a>.</p></li>
+</ul></div>
+<p>
 </p>
 <p>
 <a href="http://library.gnome.org/devel/glib/unstable/glib-Dynamic-Loading-of-Modules.html#GModule"><span class="type">GModule</span></a> is used for loading the plugin, so <a href="http://library.gnome.org/devel/glib/unstable/glib-Dynamic-Loading-of-Modules.html#GModule"><span class="type">GModule</span></a>'s features can
-be used also (like exporting <code class="function">g_module_check_init()</code> to initialize
-multimedia framework used for extracting metadata).
+be used also (like exporting <code class="function">g_module_check_init</code>() to
+initialize the multimedia framework used for extracting metadata).
 </p>
 <p>
 Default plugin directory and default plugin file is set during
 configuration stage, but it can be overriden during runtime by
-setting respectively <code class="literal">GUPNP_DLNA_METADATA_BACKEND</code> and
-<code class="literal">GUPNP_DLNA_METADATA_BACKEND_DIR</code> environment variables before the
-plugin is loaded (i.e. before <a href="../gupnp-dlna/GUPnPDLNAProfileGuesser.html"><span class="type">GUPnPDLNAProfileGuesser</span></a> is used for
+setting respectively <code class="envar">GUPNP_DLNA_METADATA_BACKEND</code> and
+<code class="envar">GUPNP_DLNA_METADATA_BACKEND_DIR</code> environment variables before
+the plugin is loaded (i.e. before <a href="../gupnp-dlna/GUPnPDLNAProfileGuesser.html"><span class="type">GUPnPDLNAProfileGuesser</span></a> is used for
 guessing profile).
 </p>
 <p>
-The <code class="literal">GUPNP_DLNA_METADATA_BACKEND</code> environment variable should hold a
-name like "gstreamer", so libgstreamer.so will be loaded. For
-determining a plugin filename <a href="http://library.gnome.org/devel/glib/unstable/glib-Dynamic-Loading-of-Modules.html#g-module-build-path"><code class="function">g_module_build_path()</code></a> is used.
+The <code class="envar">GUPNP_DLNA_METADATA_BACKEND</code> environment variable should
+hold a name like <strong class="userinput"><code>"gstreamer"</code></strong>, so
+<code class="filename">libgstreamer.so</code> will be loaded. For determining a
+plugin filename <a href="http://library.gnome.org/devel/glib/unstable/glib-Dynamic-Loading-of-Modules.html#g-module-build-path"><code class="function">g_module_build_path()</code></a> is used.
 </p>
 <p>
 If subclassing <a class="link" href="GUPnPDLNAMetadataExtractor.html" title="GUPnPDLNAMetadataExtractor"><span class="type">GUPnPDLNAMetadataExtractor</span></a> then also

@@ -213,6 +213,7 @@ SHELL = @SHELL@
 STRIP = @STRIP@
 VAPIGEN = @VAPIGEN@
 VERSION = @VERSION@
+XMLLINT = @XMLLINT@
 abs_builddir = @abs_builddir@
 abs_srcdir = @abs_srcdir@
 abs_top_builddir = @abs_top_builddir@
@@ -277,6 +278,8 @@ dlnaprofiles = mp3.xml \
 	       mpeg1.xml \
 	       avc.xml \
 	       mpeg-ts.xml \
+	       mpeg-ps.xml \
+	       mpeg-common.xml \
 	       mpeg4.xml \
 	       jpeg.xml \
 	       png.xml
@@ -499,6 +502,9 @@ uninstall-am: uninstall-dlnaDATA
 	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
 	uninstall uninstall-am uninstall-dlnaDATA
 
+
+@HAVE_XMLLINT_TRUE@check-profiles: $(dlnaprofiles) $(dlnaschemas)
+@HAVE_XMLLINT_TRUE@	$(XMLLINT) --relaxng $(dlnaschemas) $(dlnaprofiles) >/dev/null
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

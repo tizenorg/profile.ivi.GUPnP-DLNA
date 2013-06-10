@@ -1,6 +1,6 @@
 AC_PREREQ([2.63])
 AC_INIT([gupnp-dlna],
-        [0.10.0],
+        [0.10.2],
         [https://bugzilla.gnome.org/enter_bug.cgi?product=gupnp&component=gupnp-dlna],
         [gupnp-dlna],
         [http://www.gupnp.org/])
@@ -167,13 +167,6 @@ PKG_CHECK_MODULES([GLIB], [glib-2.0 >= 2.32])
 PKG_CHECK_MODULES([GOBJECT], [gobject-2.0])
 PKG_CHECK_MODULES([GMODULE], [gmodule-2.0])
 
-AC_SUBST(GLIB_CFLAGS)
-AC_SUBST(GLIB_LIBS)
-AC_SUBST(GOBJECT_CFLAGS)
-AC_SUBST(GOBJECT_LIBS)
-AC_SUBST(GMODULE_CFLAGS)
-AC_SUBST(GMODULE_LIBS)
-
 # Check for g_clear_pointer
 have_g_clear_pointer='no'
 PKG_CHECK_EXISTS([glib-2.0 >= 2.34],
@@ -222,17 +215,32 @@ fi
 GOBJECT_INTROSPECTION_CHECK([0.6.4])
 
 # vapigen
+have_vapigen=no
 AS_IF([test "x$found_introspection" = "xyes"],
       [
-       VALA_PROG_VAPIGEN([0.18])
+       dnl output of g-i >= 1.36.0 needs vapigen >= 0.20 to process
+       AC_MSG_CHECKING([whether G-I is 1.36 or newer])
+       VAPIGEN_MIN_VERSION=0.18
+       AS_IF([pkg-config --atleast-version=1.36.0 gobject-introspection-1.0],
+             [
+              AC_MSG_RESULT([yes])
+              VAPIGEN_MIN_VERSION=0.20
+             ],[AC_MSG_RESULT([no])]
+       )
+       GUPNP_PROG_VAPIGEN([$VAPIGEN_MIN_VERSION])
       ]
 )
+AS_IF([test "x$VAPIGEN" != "x"], [have_vapigen=yes])
 AM_CONDITIONAL([HAVE_VAPIGEN], [test "x$VAPIGEN" != "x"])
 
 GTK_DOC_CHECK([1.11],[--flavour no-tmpl])
 # for fixxref
 GLIB_PREFIX="`$PKG_CONFIG --variable=prefix glib-2.0`"
 AC_SUBST(GLIB_PREFIX)
+
+dnl xmllint for schema validation
+AC_PATH_PROG([XMLLINT],[xmllint])
+AM_CONDITIONAL([HAVE_XMLLINT], [test "x$XMLLINT" != "x"])
 
 AC_CONFIG_FILES([
 Makefile
@@ -258,6 +266,8 @@ AC_OUTPUT
 echo
 echo 'Configuration status:'
 echo
+echo "GObject-Introspection:                   $found_introspection"
+echo "VALA bindings:                           $have_vapigen"
 echo "Default metadata backend:                $with_default_metadata_backend"
 echo "Default metadata backend directory:      $with_default_metadata_backend_dir"
 echo "Build GStreamer metadata backend:        $enable_gstreamer_metadata_backend"

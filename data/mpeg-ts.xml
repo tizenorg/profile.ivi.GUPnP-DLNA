@@ -2,9 +2,10 @@
 
 <dlna-profiles>
   <include ref="common.xml" />
+  <include ref="mpeg-common.xml" />
 
   <restrictions>
-    <restriction id="MPEG_TS" type="container">
+    <restriction id="MPEG_TS_ISO" type="container">
       <field name="name" type="string">
         <value>video/mpegts</value>
       </field>
@@ -16,15 +17,43 @@
       </field>
     </restriction>
 
-    <restriction id="MPEG_TS_AUDIO" type="audio">
-      <field name="rate" type="int">
-        <value>48000</value>
+    <!-- TS with 192 byte packet size and all zero timestamps -->
+    <restriction id="MPEG_TS" type="container">
+      <field name="name" type="string">
+        <value>video/mpegts</value>
       </field>
+      <field name="systemstream" type="boolean">
+        <value>true</value>
+      </field>
+      <field name="packetsize" type="int">
+        <value>192</value>
+      </field>
+    </restriction>
+
+    <restriction id="MPEG_TS_AUDIO_BASE" type="audio">
       <field name="channels" type="int">
         <range min="1" max="6" />
       </field>
       <field name="bitrate" type="int" used="in-strict">
         <range min="1" max="448000" />
+      </field>
+    </restriction>
+
+    <!-- audio rate restrictions for non-EU TS streams -->
+    <restriction id="MPEG_TS_AUDIO" type="audio">
+      <parent name="MPEG_TS_AUDIO_BASE" />
+      <field name="rate" type="int">
+        <value>48000</value>
+      </field>
+    </restriction>
+
+    <!-- audio rate restrictions for EU TS streams -->
+    <restriction id="MPEG_TS_AUDIO_EU" type="audio">
+      <parent name="MPEG_TS_AUDIO_BASE"/>
+      <field name="rate" type="int">
+        <value>32000</value>
+        <value>44100</value>
+        <value>48000</value>
       </field>
     </restriction>
 
@@ -52,136 +81,6 @@
         <!-- Max. system bitrate is 19.3927 Mb/s. Subtracting max. audio
              bitrate, and ignoring close caption data and other overhead -->
         <range min="1" max="18881700" />
-      </field>
-    </restriction>
-
-    <!-- SD resolutions -->
-    <!-- NA region -->
-    <restriction id="720x480" type="video">
-      <parent name="525_D1" />
-      <field name="framerate" type="fraction">
-        <value>30000/1001</value>
-      </field>
-      <field name="pixel-aspect-ratio" type="fraction" used="in-strict">
-        <value>32/27</value>
-        <value>8/9</value>
-      </field>
-    </restriction>
-
-    <restriction id="704x480" type="video">
-      <parent name="525_4SIF" />
-      <field name="framerate" type="fraction">
-        <value>24000/1001</value> <!-- Note: only valid for interlaced=false -->
-        <value>24/1</value>
-        <value>30000/1001</value>
-        <value>30/1</value>
-        <value>60000/1001</value> <!-- Note: only valid for interlaced=false -->
-        <value>60/1</value> <!-- Note: only valid for interlaced=false -->
-      </field>
-      <field name="pixel-aspect-ratio" type="fraction" used="in-strict">
-        <value>40/33</value>
-        <value>10/11</value>
-      </field>
-    </restriction>
-
-    <restriction id="640x480" type="video">
-      <parent name="VGA" />
-      <field name="framerate" type="fraction">
-        <value>24000/1001</value> <!-- Note: only valid for interlaced=false -->
-        <value>24/1</value>
-        <value>30000/1001</value>
-        <value>30/1</value>
-        <value>60000/1001</value> <!-- Note: only valid for interlaced=false -->
-        <value>60/1</value> <!-- Note: only valid for interlaced=false -->
-      </field>
-      <field name="pixel-aspect-ratio" type="fraction" used="in-strict">
-        <value>1/1</value>
-        <value>4/3</value>
-      </field>
-    </restriction>
-
-    <restriction id="544x480" type="video">
-      <parent name="525_3/4D1" />
-      <field name="framerate" type="fraction">
-        <value>30000/1001</value>
-      </field>
-      <field name="pixel-aspect-ratio" type="fraction" used="in-strict">
-        <value>80/51</value>
-        <value>20/17</value>
-      </field>
-    </restriction>
-
-    <restriction id="480x480" type="video">
-      <parent name="525_2/3D1" />
-      <field name="framerate" type="fraction">
-        <value>30000/1001</value>
-      </field>
-      <field name="pixel-aspect-ratio" type="fraction" used="in-strict">
-        <value>16/9</value>
-        <value>4/3</value>
-      </field>
-    </restriction>
-
-    <restriction id="352x480" type="video">
-      <parent name="525_1/2D1" />
-      <field name="framerate" type="fraction">
-        <value>30000/1001</value>
-      </field>
-      <field name="pixel-aspect-ratio" type="fraction" used="in-strict">
-        <value>80/33</value>
-        <value>20/11</value>
-      </field>
-    </restriction>
-
-    <!-- EU region -->
-    <restriction id="EU_FPS" type="video">
-      <field name="framerate" type="fraction">
-        <value>25/1</value>
-      </field>
-    </restriction>
-
-    <restriction id="720x576" type="video">
-      <parent name="625_D1" />
-      <parent name="EU_FPS" />
-      <field name="pixel-aspect-ratio" type="fraction" used="in-strict">
-        <value>64/45</value>
-        <value>16/15</value>
-      </field>
-    </restriction>
-
-    <restriction id="544x576" type="video">
-      <parent name="625_3/4D1" />
-      <parent name="EU_FPS" />
-      <field name="pixel-aspect-ratio" type="fraction" used="in-strict">
-        <value>32/17</value>
-        <value>24/17</value>
-      </field>
-    </restriction>
-
-    <restriction id="480x576" type="video">
-      <parent name="625_2/3D1" />
-      <parent name="EU_FPS" />
-      <field name="pixel-aspect-ratio" type="fraction" used="in-strict">
-        <value>32/15</value>
-        <value>8/5</value>
-      </field>
-    </restriction>
-
-    <restriction id="352x576" type="video">
-      <parent name="625_1/2D1" />
-      <parent name="EU_FPS" />
-      <field name="pixel-aspect-ratio" type="fraction" used="in-strict">
-        <value>32/11</value>
-        <value>24/11</value>
-      </field>
-    </restriction>
-
-    <restriction id="352x288" type="video">
-      <parent name="CIF" />
-      <parent name="EU_FPS" />
-      <field name="pixel-aspect-ratio" type="fraction" used="in-strict">
-        <value>16/11</value>
-        <value>12/11</value>
       </field>
     </restriction>
 
@@ -252,15 +151,15 @@
     </restriction>
   </restrictions>
 
-  <dlna-profile name="MPEG_TS_SD_NA_ISO" mime="video/mpeg">
+  <dlna-profile id="MPEG_TS_SD_NA_BASE">
     <!-- Note: We have no way to restrict the system bitrate yet -->
-    <parent name="MPEG_TS" />
+    <parent name="MPEG_TS_ISO" />
 
     <restriction type="audio">
       <parent name="MPEG_TS_AUDIO" />
 
       <field name="name" type="string">
-	<value>audio/x-ac3</value>
+        <value>audio/x-ac3</value>
       </field>
     </restriction>
 
@@ -268,7 +167,7 @@
       <parent name="MPEG_TS_AUDIO" />
 
       <field name="name" type="string">
-	<value>audio/x-private1-ac3</value>
+        <value>audio/x-private1-ac3</value>
       </field>
     </restriction>
 
@@ -276,7 +175,7 @@
       <parent name="MPEG_TS_AUDIO" />
 
       <field name="name" type="string">
-	<value>audio/ac3</value>
+        <value>audio/ac3</value>
       </field>
     </restriction>
 
@@ -311,31 +210,41 @@
     </restriction>
   </dlna-profile>
 
-  <dlna-profile name="MPEG_TS_SD_EU_ISO" mime="video/mpeg">
+  <dlna-profile id="MPEG_TS_SD_EU_BASE">
     <!-- Note: We have no way to restrict the system bitrate yet -->
-    <parent name="MPEG_TS" />
-
     <restriction type="audio">
-      <parent name="MPEG_TS_AUDIO" />
+      <parent name="MPEG_TS_AUDIO_EU" />
 
       <field name="name" type="string">
-	<value>audio/x-ac3</value>
+          <value>audio/x-ac3</value>
       </field>
     </restriction>
 
     <restriction type="audio">
-      <parent name="MPEG_TS_AUDIO" />
+      <parent name="MPEG_TS_AUDIO_EU" />
 
       <field name="name" type="string">
-	<value>audio/x-private1-ac3</value>
+          <value>audio/x-private1-ac3</value>
       </field>
     </restriction>
 
     <restriction type="audio">
-      <parent name="MPEG_TS_AUDIO" />
+      <parent name="MPEG_TS_AUDIO_EU" />
 
       <field name="name" type="string">
-	<value>audio/ac3</value>
+          <value>audio/ac3</value>
+      </field>
+    </restriction>
+
+    <restriction type="audio">
+      <parent name="MPEG_TS_AUDIO_EU" />
+
+      <field name="name" type="string">
+          <value>audio/mpeg</value>
+      </field>
+      <field name="mpegversion" type="int">
+          <value>1</value>
+          <value>2</value>
       </field>
     </restriction>
 
@@ -365,9 +274,9 @@
     </restriction>
   </dlna-profile>
 
-  <dlna-profile name="MPEG_TS_HD_NA_ISO" mime="video/mpeg">
-    <parent name="MPEG_TS" />
 
+
+  <dlna-profile id="MPEG_TS_HD_NA_BASE">
     <restriction type="audio">
       <parent name="MPEG_TS_AUDIO" />
 
@@ -410,6 +319,48 @@
     <restriction type="video">
       <parent name="MPEG_TS_VIDEO" />
       <parent name="1280x1080" />
+    </restriction>
+  </dlna-profile>
+
+  <dlna-profile name="MPEG_TS_SD_NA" mime="video/vnd.dlna.mpeg-tts" base-profile="MPEG_TS_SD_NA_BASE">
+    <!-- Note: We have no way to restrict the system bitrate yet -->
+    <restriction type="container">
+      <parent name="MPEG_TS" />
+    </restriction>
+  </dlna-profile>
+
+  <dlna-profile name="MPEG_TS_SD_NA_ISO" mime="video/mpeg" base-profile="MPEG_TS_SD_NA_BASE">
+    <!-- Note: We have no way to restrict the system bitrate yet -->
+    <restriction type="container">
+      <parent name="MPEG_TS_ISO" />
+    </restriction>
+  </dlna-profile>
+
+  <dlna-profile name="MPEG_TS_HD_NA" mime="video/vnd.dlna.mpeg-tts" base-profile="MPEG_TS_HD_NA_BASE">
+    <!-- Note: We have no way to restrict the system bitrate yet -->
+    <restriction type="container">
+      <parent name="MPEG_TS" />
+    </restriction>
+  </dlna-profile>
+
+  <dlna-profile name="MPEG_TS_HD_NA_ISO" mime="video/mpeg" base-profile="MPEG_TS_HD_NA_BASE">
+    <!-- Note: We have no way to restrict the system bitrate yet -->
+    <restriction type="container">
+      <parent name="MPEG_TS_ISO" />
+    </restriction>
+  </dlna-profile>
+
+  <dlna-profile name="MPEG_TS_SD_EU" mime="video/vnd.dlna.mpeg-tts" base-profile="MPEG_TS_SD_EU_BASE">
+    <!-- Note: We have no way to restrict the system bitrate yet -->
+    <restriction type="container">
+      <parent name="MPEG_TS" />
+    </restriction>
+  </dlna-profile>
+
+  <dlna-profile name="MPEG_TS_SD_EU_ISO" mime="video/mpeg" base-profile="MPEG_TS_SD_EU_BASE">
+    <!-- Note: We have no way to restrict the system bitrate yet -->
+    <restriction type="container">
+      <parent name="MPEG_TS_ISO" />
     </restriction>
   </dlna-profile>
 </dlna-profiles>
