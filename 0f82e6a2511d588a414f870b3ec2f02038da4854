@@ -1,0 +1,8 @@
+Change-Id: I0f82e6a2511d588a414f870b3ec2f02038da4854
+Code-Review+2: Regis Merlino <regis.merlino@intel.com>
+Verified+1: Regis Merlino <regis.merlino@intel.com>
+Submitted-by: Regis Merlino <regis.merlino@intel.com>
+Submitted-at: Tue, 11 Jun 2013 06:18:01 -0700
+Reviewed-on: https://review.tizen.org/gerrit/3949
+Project: profile/ivi/GUPnP-DLNA
+Branch: refs/heads/tizen
