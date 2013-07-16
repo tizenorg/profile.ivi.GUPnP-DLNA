@@ -1,3 +1,6 @@
+* Tue Jul 16 00:11:24 UTC 2013 - tracy.graydon@intel.com
+- Stripped the yaml cruft from the spec file 
+
 * Tue Jun 11 2013 Regis Merlino <regis.merlino@intel.com>
 - Update gupnp-dlna to 0.10.2 (34fee04)
 
