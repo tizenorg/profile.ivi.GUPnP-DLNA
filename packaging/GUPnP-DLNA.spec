@@ -8,6 +8,8 @@ URL:        http://www.gupnp.org
 Source0:    http://download.gnome.org/sources/%{name}/0.10/%{name}-%{version}.tar.gz
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
+BuildRequires:  gobject-introspection-devel
+BuildRequires:  vala
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(gstreamer-1.0)
@@ -97,4 +99,13 @@ rm -rf  $RPM_BUILD_ROOT%{_datadir}/gtk-doc
 %{_libdir}/libgupnp-dlna-2.0.so
 %{_libdir}/libgupnp-dlna-gst-2.0.so
 %{_libdir}/gupnp-dlna/libgstreamer.so
+%{_libdir}/girepository-1.0/GUPnPDLNA-2.0.typelib
+%{_libdir}/girepository-1.0/GUPnPDLNAGst-2.0.typelib
+%{_datadir}/gir-1.0/GUPnPDLNA-2.0.gir
+%{_datadir}/gir-1.0/GUPnPDLNAGst-2.0.gir
+%{_datadir}/vala/vapi/gupnp-dlna-2.0.deps
+%{_datadir}/vala/vapi/gupnp-dlna-2.0.vapi
+%{_datadir}/vala/vapi/gupnp-dlna-gst-2.0.deps
+%{_datadir}/vala/vapi/gupnp-dlna-gst-2.0.vapi
+
 
